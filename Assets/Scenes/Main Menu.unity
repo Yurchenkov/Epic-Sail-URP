@@ -572,7 +572,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8ed9b033aa7df9649b021c830e9bc4b6, type: 3}
+    m_Font: {fileID: 12800000, guid: 5028c875b81e07c4f8424dc19e788c80, type: 3}
     m_FontSize: 54
     m_FontStyle: 1
     m_BestFit: 0
@@ -584,7 +584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEW GAME
+  m_Text: "\u0418\u0413\u0420\u0410\u0422\u042C"
 --- !u!222 &215538083
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1691,7 +1691,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8ed9b033aa7df9649b021c830e9bc4b6, type: 3}
+    m_Font: {fileID: 12800000, guid: 5028c875b81e07c4f8424dc19e788c80, type: 3}
     m_FontSize: 54
     m_FontStyle: 1
     m_BestFit: 0
@@ -1703,7 +1703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: "\u0412\u042B\u0425\u041E\u0414"
 --- !u!222 &1075214570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1954,7 +1954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 337.97974, y: -197}
+  m_AnchoredPosition: {x: 393, y: -197}
   m_SizeDelta: {x: 675.95996, y: 259.15002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1340922973
@@ -1978,13 +1978,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8ed9b033aa7df9649b021c830e9bc4b6, type: 3}
+    m_Font: {fileID: 12800000, guid: 5028c875b81e07c4f8424dc19e788c80, type: 3}
     m_FontSize: 147
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 217
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2795,7 +2795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8ed9b033aa7df9649b021c830e9bc4b6, type: 3}
+    m_Font: {fileID: 12800000, guid: 5028c875b81e07c4f8424dc19e788c80, type: 3}
     m_FontSize: 54
     m_FontStyle: 1
     m_BestFit: 0
@@ -2807,7 +2807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GALLERY
+  m_Text: "\u0413\u0410\u041B\u041B\u0415\u0420\u0415\u042F"
 --- !u!222 &2076429276
 CanvasRenderer:
   m_ObjectHideFlags: 0

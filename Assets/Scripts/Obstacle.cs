@@ -6,10 +6,6 @@ public class Obstacle : MonoBehaviour {
   
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
-       
-        GetComponent<MeshFilter>().mesh = GetComponentInChildren<MeshFilter>().mesh;
-        GetComponent<MeshCollider>().sharedMesh = GetComponentInChildren<MeshFilter>().mesh;
-
     }
 
     private void OnCollisionEnter(Collision collision) {

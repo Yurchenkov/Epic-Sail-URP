@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 3333778008821071145}
   - component: {fileID: 3333778008821071144}
   m_Layer: 5
-  m_Name: Tutorial Panel
+  m_Name: Popup Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3333778009176732453}
   m_Layer: 5
-  m_Name: Tutorial Window
+  m_Name: Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3333778009213243479}
   m_Layer: 5
-  m_Name: Tutorial
+  m_Name: Popup Canvas
   m_TagString: TutorialCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1415,7 +1415,7 @@ GameObject:
   - component: {fileID: 3333778010014443492}
   - component: {fileID: 3333778010014443495}
   m_Layer: 5
-  m_Name: Tutorial Background
+  m_Name: Popup Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 3333778010034935102}
   - component: {fileID: 3333778008664726026}
   m_Layer: 5
-  m_Name: Tutorial Text
+  m_Name: Popup Text
   m_TagString: TutorialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

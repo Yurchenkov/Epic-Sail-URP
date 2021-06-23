@@ -438,8 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!33 &442104914
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -493,8 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!65 &719387412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -637,8 +639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!1 &844418625
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,8 +782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!65 &1186589203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1113,8 +1117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!1 &1861367570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,8 +1241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!1001 &2021194238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1410,8 +1416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 1026795778119048940}
-  tutorialText: {fileID: 1026795778119048939}
+  popupCanvas: {fileID: 1026795778119048940}
+  popupText: {fileID: 1026795778119048939}
+  isDisposable: 1
 --- !u!65 &2094700674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1861,7 +1868,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3939853794336139085, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
       propertyPath: m_Name
-      value: walnut
+      value: Boat
       objectReference: {fileID: 0}
     - target: {fileID: 4209816679219386626, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
       propertyPath: _pointer

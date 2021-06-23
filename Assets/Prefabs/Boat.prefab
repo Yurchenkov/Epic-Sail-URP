@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 4209816679219386629}
   - component: {fileID: 4209816679219386626}
   m_Layer: 0
-  m_Name: walnut
+  m_Name: Boat
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

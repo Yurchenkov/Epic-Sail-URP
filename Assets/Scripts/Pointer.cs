@@ -8,7 +8,7 @@ public class Pointer : MonoBehaviour {
     private TrailRenderer _trailRenderer;
     private SphereCollider _pointerCollider;
     private GameManager _gameManager;
-    private bool _isPushSomething = false;
+    public bool _isPushSomething = false;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
@@ -18,9 +18,10 @@ public class Pointer : MonoBehaviour {
     }
 
     private void Update() {
+        GameManager.CompleteTutorial("Movement");
         if (_gameManager.isGamePaused || !GameManager.IsTutorialComplete(GameManager.TUTORIAL_TYPE_MOVEMENT))
             return;
-
+        
         RenderTrail();
         Move();
         FillLastTrailPointerPosition();

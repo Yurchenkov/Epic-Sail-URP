@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     public const string TAG_POINTER = "Pointer";
     public const string TAG_COIN_COUNTER = "CoinCounter";
     public const string TAG_LEVEL_SWITCHER = "LevelSwitcher";
+    public const string TAG_TUTORIAL_CANVAS = "TutorialCanvas";
+    public const string TAG_TUTORIAL_TEXT = "TutorialText";
 
     public const string TAG_WELCOME_WINDOW = "WelcomeWindow";
     public const string TAG_MOVEMENT_TUTORIAL = "MovementTutorial";
@@ -28,7 +30,6 @@ public class GameManager : MonoBehaviour {
     public static float totalCoinCounter = 0f;
     public string currentLevelType;
     public static List<string> completedTutorials = new List<string>();
-    public static List<string> viewedPopups = new List<string>();
 
     public void Pause() {
         Time.timeScale = 0f;
@@ -69,15 +70,7 @@ public class GameManager : MonoBehaviour {
         return completedTutorials.Contains(tutorialType);
     }
 
-    public static bool IsPopupViewed(string popupType) {
-        return viewedPopups.Contains(popupType);
-    }
-
     public static void CompleteTutorial(string tutorialType) {
         completedTutorials.Add(tutorialType);
-    }
-
-    public static void SetPopupAsViewed(string popupType) {
-        viewedPopups.Add(popupType);
     }
 }

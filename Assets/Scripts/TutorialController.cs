@@ -13,16 +13,10 @@ public class TutorialController : MonoBehaviour {
         _tutorialType = gameObject.tag;
     }
 
-    private void Update() {
-        CloseTutorial();
-    }
-
-    private void CloseTutorial() {
-        if (tutorialCanvas.activeSelf && Input.GetMouseButtonDown(0)) {
-            tutorialCanvas.SetActive(false);
-            GameManager.CompleteTutorial(_tutorialType);
-            ResumeGame();
-        }
+    public void CloseTutorial() {
+        tutorialCanvas.SetActive(false);
+        GameManager.CompleteTutorial(_tutorialType);
+        ResumeGame();
     }
 
     private void OnTriggerEnter(Collider other) {

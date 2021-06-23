@@ -15,7 +15,6 @@ TagManager:
   - TutorialCanvas
   - TutorialText
   - OpenLevelTutorial
-  - Coin
   layers:
   - Default
   - TransparentFX

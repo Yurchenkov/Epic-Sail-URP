@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     public const string LEVEL_TYPE_OPEN = "Open";
     public const string LEVEL_TYPE_LINEAR = "Linear";
 
+    public const string TUTORIAL_TYPE_MOVEMENT = "Movement";
+
     public const string LAYER_MASK_WATER = "Water";
 
     private const int BUILD_INDEX_MAIN_MENU = 0;

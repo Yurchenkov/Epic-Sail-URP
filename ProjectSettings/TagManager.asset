@@ -9,11 +9,11 @@ TagManager:
   - CoinCounter
   - LevelSwitcher
   - WelcomeWindow
-  - MovementTutorial
   - CoinTutorial
   - ObstacleTutorial
   - OpenLevelTutorial
   - Coin
+  - Movement
   layers:
   - Default
   - TransparentFX

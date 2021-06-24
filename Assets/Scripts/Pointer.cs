@@ -18,7 +18,7 @@ public class Pointer : MonoBehaviour {
     }
 
     private void Update() {
-        if (_gameManager.isGamePaused)
+        if (_gameManager.isGamePaused || !GameManager.IsTutorialComplete(GameManager.TUTORIAL_TYPE_MOVEMENT))
             return;
 
         RenderTrail();

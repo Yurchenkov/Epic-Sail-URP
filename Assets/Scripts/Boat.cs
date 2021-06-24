@@ -9,22 +9,33 @@ public class Boat : MonoBehaviour {
 
     private GameManager _gameManager;
     private Pointer _pointer;
-
+    private bool _isToched;
+    private bool _isNotTakeDirection = true;
+    private Vector3 _direction;
+    private Vector3 _target;
+    private Transform _myTransform;
+    
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _pointer = GameObject.FindGameObjectWithTag(GameManager.TAG_POINTER).GetComponent<Pointer>();
+        _myTransform = GetComponent<Transform>();
+        _target = _myTransform.position;
     }
 
     private void Update() {
-        Vector3 target = GetMotionTarget();
-        Move(target);
-        Rotate(target);
-    }
-
-    private Vector3 GetMotionTarget() {
-        Vector3 target = _pointer.lastTrailPointerPosition;
-        target.y += _defaultPositionY;
-        return target;
+        if (_pointer.takeable & (_isToched == _pointer.isPushSomething) & _isNotTakeDirection) {
+            _direction = _pointer.direction;
+            _target = _myTransform.position + _direction;
+            _target.y = _defaultPositionY;
+            _isNotTakeDirection = false;
+            _isToched = false;
+        }
+        if (!_pointer.takeable) {
+            _isNotTakeDirection = true;
+        }
+        
+        Move(_target);
+        Rotate(_target);
     }
 
     private void Move(Vector3 target) {
@@ -41,7 +52,7 @@ public class Boat : MonoBehaviour {
     }
 
     private Vector3 GetDirection(Vector3 target) {
-        return target - transform.position;
+        return target - _myTransform.position;
     }
 
     private void Rotate(Vector3 target) {
@@ -49,7 +60,6 @@ public class Boat : MonoBehaviour {
             SetOpenLevelRotation(target);
             return;
         }
-
         SetLinearLevelRotation(target);
     }
 
@@ -63,5 +73,9 @@ public class Boat : MonoBehaviour {
     private void SetLinearLevelRotation(Vector3 target) {
         Vector3 direction = GetDirection(target);
         transform.rotation = Quaternion.Euler(direction.z, 0, -direction.x);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        _isToched = true;
     }
 }

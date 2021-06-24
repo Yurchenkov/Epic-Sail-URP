@@ -1,28 +1,33 @@
 using UnityEngine;
 
-public class Boat : MonoBehaviour {
+public class Pushable : MonoBehaviour {
 
+    public bool isPushed = false;
+    public Vector3 motionTarget;
     public float speed = 1f;
 
     [SerializeField] private float _defaultPositionY = 0.7f;
     [SerializeField] private float _tilt = 1f;
 
     private GameManager _gameManager;
-    private Pointer _pointer;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
-        _pointer = GameObject.FindGameObjectWithTag(GameManager.TAG_POINTER).GetComponent<Pointer>();
     }
 
     private void Update() {
+        if (!isPushed)
+            return;
+
         Vector3 target = GetMotionTarget();
         Move(target);
-        Rotate(target);
+
+        if (CompareTag(GameManager.TAG_PLAYER))
+            Rotate(target);
     }
 
     private Vector3 GetMotionTarget() {
-        Vector3 target = _pointer.lastTrailPointerPosition;
+        Vector3 target = motionTarget;
         target.y += _defaultPositionY;
         return target;
     }

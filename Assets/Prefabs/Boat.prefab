@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 4209816679219386625}
   - component: {fileID: 4209816679219386628}
   - component: {fileID: 4209816679219386629}
-  - component: {fileID: 4209816679219386626}
+  - component: {fileID: 221632780290375920}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Player
@@ -321,7 +321,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3939853794336139085}
   m_Mesh: {fileID: -8131571581269328107, guid: 31b93d21752b9274bb4763e145956a54, type: 3}
---- !u!114 &4209816679219386626
+--- !u!114 &221632780290375920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,9 +330,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3939853794336139085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07880bf6bd8c47408c6fde478dcdd2d, type: 3}
+  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPushed: 0
+  motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
   _defaultPositionY: 0.7
   _tilt: 1

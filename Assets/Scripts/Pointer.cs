@@ -9,6 +9,7 @@ public class Pointer : MonoBehaviour {
     private SphereCollider _pointerCollider;
     private GameManager _gameManager;
     private bool _isPushSomething = false;
+    private GameObject _pushedObject;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
@@ -41,11 +42,26 @@ public class Pointer : MonoBehaviour {
     private void FillLastTrailPointerPosition() {
         if (Input.GetMouseButtonUp(0) && _isPushSomething) {
             lastTrailPointerPosition = transform.position;
+
+            Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
+            if (pushableComponent == null) {
+                _isPushSomething = false;
+                _pushedObject = null;
+                return;
+            }
+
+            pushableComponent.isPushed = _isPushSomething;
+            pushableComponent.motionTarget = lastTrailPointerPosition;
+
             _isPushSomething = false;
+            _pushedObject = null;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         _isPushSomething = true;
+
+        if (_pushedObject == null)
+            _pushedObject = other.gameObject;
     }
 }

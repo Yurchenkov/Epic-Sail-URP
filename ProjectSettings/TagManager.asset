@@ -12,8 +12,6 @@ TagManager:
   - MovementTutorial
   - CoinTutorial
   - ObstacleTutorial
-  - TutorialCanvas
-  - TutorialText
   - OpenLevelTutorial
   - Coin
   layers:

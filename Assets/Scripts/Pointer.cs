@@ -19,7 +19,6 @@ public class Pointer : MonoBehaviour {
     }
 
     private void Update() {
-        GameManager.CompleteTutorial("Movement");
         if (_gameManager.isGamePaused || !GameManager.IsTutorialComplete(GameManager.TUTORIAL_TYPE_MOVEMENT))
             return;
 

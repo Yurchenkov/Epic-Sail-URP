@@ -794,6 +794,7 @@ GameObject:
   - component: {fileID: 844418627}
   - component: {fileID: 844418630}
   - component: {fileID: 844418631}
+  - component: {fileID: 844418632}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -889,9 +890,9 @@ Rigidbody:
   m_Drag: 0.7
   m_AngularDrag: 0.7
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &844418631
 MonoBehaviour:
@@ -909,6 +910,21 @@ MonoBehaviour:
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
   _tilt: 1
+--- !u!114 &844418632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844418625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthBeforeSubmerged: 1
+  displacementAmount: 3
+  rigidBody: {fileID: 844418630}
 --- !u!1 &1186589200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1141,7 @@ GameObject:
   - component: {fileID: 1523436953}
   - component: {fileID: 1523436956}
   - component: {fileID: 1523436957}
+  - component: {fileID: 1523436958}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -1220,9 +1237,9 @@ Rigidbody:
   m_Drag: 0.7
   m_AngularDrag: 0.7
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1523436957
 MonoBehaviour:
@@ -1240,6 +1257,21 @@ MonoBehaviour:
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
   _tilt: 1
+--- !u!114 &1523436958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523436951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthBeforeSubmerged: 1
+  displacementAmount: 3
+  rigidBody: {fileID: 1523436956}
 --- !u!1 &1850589044
 GameObject:
   m_ObjectHideFlags: 0

@@ -161,10 +161,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136920155}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &136920157
@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 136920155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 107.3, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 5, z: 5}
+  m_LocalScale: {x: 25, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 2138742677}
   m_RootOrder: 0
@@ -642,28 +642,6 @@ MonoBehaviour:
   popupCanvas: {fileID: 1026795778119048940}
   popupText: {fileID: 1026795778119048939}
   isDisposable: 1
---- !u!1 &815893727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3939853794336139085, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
-  m_PrefabInstance: {fileID: 4209816680703763777}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &815893733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815893727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPushed: 0
-  motionTarget: {x: 0, y: 0, z: 0}
-  speed: 1
-  _defaultPositionY: 0.7
-  _tilt: 1
 --- !u!1 &844418625
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +656,7 @@ GameObject:
   - component: {fileID: 844418627}
   - component: {fileID: 844418630}
   - component: {fileID: 844418631}
-  - component: {fileID: 844418632}
+  - component: {fileID: 844418633}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -771,12 +749,12 @@ Rigidbody:
   m_GameObject: {fileID: 844418625}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &844418631
 MonoBehaviour:
@@ -795,7 +773,7 @@ MonoBehaviour:
   speed: 1
   _defaultPositionY: 0.7
   _tilt: 1
---- !u!114 &844418632
+--- !u!114 &844418633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -804,9 +782,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 844418625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbd7c2a47e9b3e49b7f01913b789036, type: 3}
+  m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  depthBeforeSubmerged: 0
+  displacementAmount: 3
 --- !u!1 &1186589200
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +870,7 @@ GameObject:
   - component: {fileID: 1452159088}
   - component: {fileID: 1452159091}
   - component: {fileID: 1452159092}
-  - component: {fileID: 1452159093}
+  - component: {fileID: 1452159094}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -983,12 +963,12 @@ Rigidbody:
   m_GameObject: {fileID: 1452159086}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1452159092
 MonoBehaviour:
@@ -1007,7 +987,7 @@ MonoBehaviour:
   speed: 1
   _defaultPositionY: 0.7
   _tilt: 1
---- !u!114 &1452159093
+--- !u!114 &1452159094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1016,9 +996,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1452159086}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbd7c2a47e9b3e49b7f01913b789036, type: 3}
+  m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  depthBeforeSubmerged: 0
+  displacementAmount: 3
 --- !u!1 &1523436951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1015,7 @@ GameObject:
   - component: {fileID: 1523436953}
   - component: {fileID: 1523436956}
   - component: {fileID: 1523436957}
-  - component: {fileID: 1523436958}
+  - component: {fileID: 1523436959}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -1126,12 +1108,12 @@ Rigidbody:
   m_GameObject: {fileID: 1523436951}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1523436957
 MonoBehaviour:
@@ -1150,7 +1132,7 @@ MonoBehaviour:
   speed: 1
   _defaultPositionY: 0.7
   _tilt: 1
---- !u!114 &1523436958
+--- !u!114 &1523436959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1159,9 +1141,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1523436951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbd7c2a47e9b3e49b7f01913b789036, type: 3}
+  m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  depthBeforeSubmerged: 0
+  displacementAmount: 3
 --- !u!1 &1855983143
 GameObject:
   m_ObjectHideFlags: 0

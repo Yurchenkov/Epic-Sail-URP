@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 136920157}
   - component: {fileID: 136920156}
   m_Layer: 4
-  m_Name: Plane
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &844418631
 MonoBehaviour:
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depthBeforeSubmerged: 0
+  depthBeforeSubmerged: 1
   displacementAmount: 3
 --- !u!1 &1186589200
 GameObject:
@@ -968,7 +968,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1452159092
 MonoBehaviour:
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depthBeforeSubmerged: 0
+  depthBeforeSubmerged: 1
   displacementAmount: 3
 --- !u!1 &1523436951
 GameObject:
@@ -1113,7 +1113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1523436957
 MonoBehaviour:
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depthBeforeSubmerged: 0
+  depthBeforeSubmerged: 1
   displacementAmount: 3
 --- !u!1 &1855983143
 GameObject:

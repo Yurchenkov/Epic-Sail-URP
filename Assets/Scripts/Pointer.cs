@@ -19,7 +19,9 @@ public class Pointer : MonoBehaviour {
     }
 
     private void Update() {
-        GameManager.CompleteTutorial("Movement");
+#if UNITY_EDITOR
+        GameManager.CompleteTutorial(GameManager.TUTORIAL_TYPE_MOVEMENT); // TODO: is used in development mode. Remove before release
+#endif
         if (_gameManager.isGamePaused || !GameManager.IsTutorialComplete(GameManager.TUTORIAL_TYPE_MOVEMENT))
             return;
 

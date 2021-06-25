@@ -2,14 +2,9 @@ using UnityEngine;
 
 public class Floatable : MonoBehaviour {
 
-    public float depthBeforeSubmerged = 0f;
+    public float depthBeforeSubmerged = 1f;
     public float displacementAmount = 3f;
-
-    private Rigidbody _rigidbody;
-
-    private void Awake() {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+    public Rigidbody rigidBody;
 
     private void FixedUpdate() {
         if (transform.position.y < 0f) {
@@ -18,7 +13,7 @@ public class Floatable : MonoBehaviour {
     }
 
     private void ApplyArchimedeanForce() {
-        _rigidbody.AddForce(CalculateArchimedeanForce(), ForceMode.Acceleration);
+        rigidBody.AddForce(CalculateArchimedeanForce(), ForceMode.Acceleration);
     }
 
     private Vector3 CalculateArchimedeanForce() {

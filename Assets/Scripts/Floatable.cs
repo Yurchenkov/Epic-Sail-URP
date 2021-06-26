@@ -6,8 +6,14 @@ public class Floatable : MonoBehaviour {
     public float displacementAmount = 3f;
     public Rigidbody rigidBody;
 
+    private Transform _myTransform;
+
+    private void Awake() {
+        _myTransform = transform;
+    }
+
     private void FixedUpdate() {
-        if (transform.position.y < 0f)
+        if (_myTransform.position.y < 0f)
             ApplyArchimedeanForce();
     }
 
@@ -20,6 +26,6 @@ public class Floatable : MonoBehaviour {
     }
 
     private float CalculateDisplacementMultiplier() {
-        return Mathf.Clamp01(-transform.position.y / depthBeforeSubmerged) * displacementAmount;
+        return Mathf.Clamp01(-_myTransform.position.y / depthBeforeSubmerged) * displacementAmount;
     }
 }

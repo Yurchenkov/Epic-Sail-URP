@@ -7,9 +7,8 @@ public class Floatable : MonoBehaviour {
     public Rigidbody rigidBody;
 
     private void FixedUpdate() {
-        if (transform.position.y < 0f) {
+        if (transform.position.y < 0f)
             ApplyArchimedeanForce();
-        }
     }
 
     private void ApplyArchimedeanForce() {

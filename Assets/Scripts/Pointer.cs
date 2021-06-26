@@ -11,6 +11,9 @@ public class Pointer : MonoBehaviour {
     private bool _isPushSomething = false;
     private GameObject _pushedObject;
     private Camera _mainCamera;
+    private Vector3 _inputPosition;
+    private bool _isTouched;
+    private bool _isEndingTouch;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
@@ -27,25 +30,26 @@ public class Pointer : MonoBehaviour {
         if (_gameManager.isGamePaused || !GameManager.IsTutorialComplete(GameManager.TUTORIAL_TYPE_MOVEMENT))
             return;
 
+        CheckInput();
         RenderTrail();
         Move();
         FillLastTrailPointerPosition();
     }
 
     private void RenderTrail() {
-        bool mouseInput = Input.GetMouseButton(0);
+        bool mouseInput = _isTouched;
         _trailRenderer.enabled = mouseInput;
         _pointerCollider.enabled = mouseInput;
     }
 
     private void Move() {
-        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _mainCamera.ScreenPointToRay(_inputPosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask))
             transform.position = raycastHit.point;
     }
 
     private void FillLastTrailPointerPosition() {
-        if (Input.GetMouseButtonUp(0) && _isPushSomething) {
+        if (_isEndingTouch && _isPushSomething) {
             lastTrailPointerPosition = transform.position;
 
             Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
@@ -61,6 +65,20 @@ public class Pointer : MonoBehaviour {
             _isPushSomething = false;
             _pushedObject = null;
         }
+    }
+
+    private void CheckInput() { 
+        _isTouched = Input.touchCount > 0;
+        if (_isTouched) {
+            _inputPosition = Input.GetTouch(0).position;
+            _isEndingTouch = Input.GetTouch(0).phase == TouchPhase.Ended;
+            return;
+        }
+#if UNITY_EDITOR
+        _inputPosition = Input.mousePosition;
+        _isTouched = Input.GetMouseButton(0);
+        _isEndingTouch = Input.GetMouseButtonUp(0);
+#endif
     }
 
     private void OnTriggerEnter(Collider other) {

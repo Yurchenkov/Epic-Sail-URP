@@ -10,12 +10,14 @@ public class Pointer : MonoBehaviour {
     private GameManager _gameManager;
     private bool _isPushSomething = false;
     private GameObject _pushedObject;
+    private Camera _mainCamera;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _trailRenderer = GetComponent<TrailRenderer>();
         _pointerCollider = GetComponent<SphereCollider>();
         _layerMask = LayerMask.GetMask(GameManager.LAYER_MASK_WATER);
+        _mainCamera = Camera.main;
     }
 
     private void Update() {
@@ -37,7 +39,7 @@ public class Pointer : MonoBehaviour {
     }
 
     private void Move() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask))
             transform.position = raycastHit.point;
     }

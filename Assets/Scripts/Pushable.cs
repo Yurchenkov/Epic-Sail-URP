@@ -6,6 +6,7 @@ public class Pushable : MonoBehaviour {
     public Vector3 motionTarget;
     public float speed = 1f;
 
+    [SerializeField] private float _defaultPositionY = 0.7f;
     [SerializeField] private float _tilt = 1f;
 
     private GameManager _gameManager;
@@ -18,10 +19,17 @@ public class Pushable : MonoBehaviour {
         if (!isPushed)
             return;
 
-        Move(motionTarget);
+        Vector3 target = GetMotionTarget();
+        Move(target);
 
         if (CompareTag(GameManager.TAG_PLAYER))
-            Rotate(motionTarget);
+            Rotate(target);
+    }
+
+    private Vector3 GetMotionTarget() {
+        Vector3 target = motionTarget;
+        target.y += _defaultPositionY;
+        return target;
     }
 
     private void Move(Vector3 target) {

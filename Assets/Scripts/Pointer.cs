@@ -13,7 +13,7 @@ public class Pointer : MonoBehaviour {
     private Camera _mainCamera;
     private Vector3 _inputPosition;
     private bool _isTouched;
-    private bool _isEndingTouch;
+    private bool _isTouchEnded;
     private Transform _myTransform;
 
     private void Awake() {
@@ -51,7 +51,7 @@ public class Pointer : MonoBehaviour {
     }
 
     private void FillLastTrailPointerPosition() {
-        if (_isEndingTouch && _isPushSomething) {
+        if (_isTouchEnded && _isPushSomething) {
             lastTrailPointerPosition = _myTransform.position;
 
             Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
@@ -74,13 +74,13 @@ public class Pointer : MonoBehaviour {
         if (_isTouched) {
             Touch touch = Input.GetTouch(0);
             _inputPosition = touch.position;
-            _isEndingTouch = touch.phase == TouchPhase.Ended;
+            _isTouchEnded = touch.phase == TouchPhase.Ended;
             return;
         }
 #if UNITY_EDITOR
         _inputPosition = Input.mousePosition;
         _isTouched = Input.GetMouseButton(0);
-        _isEndingTouch = Input.GetMouseButtonUp(0);
+        _isTouchEnded = Input.GetMouseButtonUp(0);
 #endif
     }
 

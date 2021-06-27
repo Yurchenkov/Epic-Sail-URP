@@ -14,7 +14,7 @@ public class Pointer : MonoBehaviour {
     private Vector3 _inputPosition;
     private bool _isTouched;
     private bool _isTouchEnded;
-    private Transform _myTransform;
+    private Transform _transform;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
@@ -22,7 +22,7 @@ public class Pointer : MonoBehaviour {
         _pointerCollider = GetComponent<SphereCollider>();
         _layerMask = LayerMask.GetMask(GameManager.LAYER_MASK_WATER);
         _mainCamera = Camera.main;
-        _myTransform = transform;
+        _transform = transform;
     }
 
     private void Update() {
@@ -52,12 +52,12 @@ public class Pointer : MonoBehaviour {
     private void Move() {
         Ray ray = _mainCamera.ScreenPointToRay(_inputPosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask))
-            _myTransform.position = raycastHit.point;
+            _transform.position = raycastHit.point;
     }
 
     private void FillLastTrailPointerPosition() {
         if (_isTouchEnded && _isPushSomething) {
-            lastTrailPointerPosition = _myTransform.position;
+            lastTrailPointerPosition = _transform.position;
 
             Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
             if (pushableComponent == null) {

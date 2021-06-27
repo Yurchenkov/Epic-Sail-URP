@@ -7,13 +7,13 @@ public class CameraFollow : MonoBehaviour {
     private float _smoothTime = 0.3f;
     private Vector3 _velocity = Vector3.zero;
     private GameManager _gameManager;
-    private Transform _myTransform;
+    private Transform _transform;
 
     private void Awake() {
         _target = GameObject.FindGameObjectWithTag(GameManager.TAG_PLAYER).transform;
         _offset = transform.position - _target.position;
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
-        _myTransform = transform;
+        _transform = transform;
     }
 
     private void LateUpdate() {
@@ -21,6 +21,6 @@ public class CameraFollow : MonoBehaviour {
         if (_gameManager.currentLevelType.Equals(GameManager.LEVEL_TYPE_LINEAR))
             targetPosition = new Vector3(targetPosition.x, targetPosition.y, 0f);
 
-        _myTransform.position = Vector3.SmoothDamp(_myTransform.position, targetPosition, ref _velocity, _smoothTime);
+        _transform.position = Vector3.SmoothDamp(_transform.position, targetPosition, ref _velocity, _smoothTime);
     }
 }

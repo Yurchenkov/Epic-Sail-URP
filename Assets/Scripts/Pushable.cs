@@ -9,11 +9,11 @@ public class Pushable : MonoBehaviour {
     [SerializeField] private float _tilt = 1f;
 
     private GameManager _gameManager;
-    private Transform _myTransform;
+    private Transform _transform;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
-        _myTransform = transform;
+        _transform = transform;
     }
 
     private void Update() {
@@ -28,7 +28,7 @@ public class Pushable : MonoBehaviour {
 
     private void Move(Vector3 target) {
         float step = GetStep(target);
-        _myTransform.position = Vector3.MoveTowards(_myTransform.position, target, step);
+        _transform.position = Vector3.MoveTowards(_transform.position, target, step);
     }
 
     private float GetStep(Vector3 target) {
@@ -40,7 +40,7 @@ public class Pushable : MonoBehaviour {
     }
 
     private Vector3 GetDirection(Vector3 target) {
-        return target - _myTransform.position;
+        return target - _transform.position;
     }
 
     private void Rotate(Vector3 target) {
@@ -56,11 +56,11 @@ public class Pushable : MonoBehaviour {
         Vector3 direction = GetDirection(target);
         Quaternion fromToRotation = Quaternion.FromToRotation(Vector3.right, direction);
         Quaternion incline = Quaternion.Euler(direction.z * _tilt, 0, -direction.x * _tilt);
-        _myTransform.rotation = Quaternion.Lerp(_myTransform.rotation, incline * fromToRotation, GetStep(target));
+        _transform.rotation = Quaternion.Lerp(_transform.rotation, incline * fromToRotation, GetStep(target));
     }
 
     private void SetLinearLevelRotation(Vector3 target) {
         Vector3 direction = GetDirection(target);
-        _myTransform.rotation = Quaternion.Euler(direction.z, 0, -direction.x);
+        _transform.rotation = Quaternion.Euler(direction.z, 0, -direction.x);
     }
 }

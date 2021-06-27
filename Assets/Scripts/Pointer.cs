@@ -34,8 +34,13 @@ public class Pointer : MonoBehaviour {
 
         CheckInput();
         RenderTrail();
-        Move();
-        FillLastTrailPointerPosition();
+#if UNITY_EDITOR // TODO: is used in development mode. Remove before release
+        _isTouched = true;
+#endif
+        if (_isTouched) {
+            Move();
+            FillLastTrailPointerPosition();
+        }
     }
 
     private void RenderTrail() {

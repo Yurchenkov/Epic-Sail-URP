@@ -7,8 +7,8 @@ public class CoinCounter : MonoBehaviour {
     private GameManager _gameManager;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
-        _coinCounterText = GameObject.FindGameObjectWithTag(GameManager.TAG_COIN_COUNTER).GetComponent<Text>();
+        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
+        _coinCounterText = GameObject.FindGameObjectWithTag(Constants.TAG_COIN_COUNTER).GetComponent<Text>();
     }
 
     private void Update() {

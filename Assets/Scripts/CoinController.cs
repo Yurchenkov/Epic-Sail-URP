@@ -7,7 +7,7 @@ public class CoinController : MonoBehaviour {
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _transform = transform;
     }
 
@@ -21,7 +21,7 @@ public class CoinController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER)) {
+        if (other.CompareTag(Constants.TAG_PLAYER)) {
             IncreaseCoinCounter();
             Destroy(gameObject);
         }

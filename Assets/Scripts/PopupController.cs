@@ -15,13 +15,13 @@ public class PopupController : MonoBehaviour {
     private void Awake() {
         PopupTextRepository popupTextRepository = new PopupTextRepository();
 
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _popupText = popupTextRepository.PopupsText;
         _popupType = gameObject.tag;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER) && !GameManager.IsPopupViewed(_popupType))
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.IsPopupViewed(_popupType))
             ShowPopup();
     }
 

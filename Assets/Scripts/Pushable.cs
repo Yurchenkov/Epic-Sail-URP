@@ -12,7 +12,7 @@ public class Pushable : MonoBehaviour {
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _transform = transform;
     }
 
@@ -22,7 +22,7 @@ public class Pushable : MonoBehaviour {
 
         Move(motionTarget);
 
-        if (CompareTag(GameManager.TAG_PLAYER))
+        if (CompareTag(Constants.TAG_PLAYER))
             Rotate(motionTarget);
     }
 
@@ -44,7 +44,7 @@ public class Pushable : MonoBehaviour {
     }
 
     private void Rotate(Vector3 target) {
-        if (_gameManager.currentLevelType == GameManager.LEVEL_TYPE_OPEN) {
+        if (_gameManager.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
             SetOpenLevelRotation(target);
             return;
         }

@@ -9,7 +9,7 @@ public class LevelSwitcher : MonoBehaviour {
     private float _transitionTime = 2f;
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER))
+        if (other.CompareTag(Constants.TAG_PLAYER))
             LoadNextLevel(SceneManager.GetActiveScene().buildIndex + 1);       
     }
 

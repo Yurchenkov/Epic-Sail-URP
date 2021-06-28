@@ -9,7 +9,7 @@ public class TutorialController : MonoBehaviour {
     private string _tutorialType;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _tutorialType = gameObject.tag;
     }
 
@@ -20,7 +20,7 @@ public class TutorialController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER) && !GameManager.IsTutorialComplete(_tutorialType))
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.IsTutorialComplete(_tutorialType))
             ShowTutorial();
     }
 

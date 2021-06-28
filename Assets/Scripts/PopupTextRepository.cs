@@ -11,11 +11,11 @@ public class PopupTextRepository {
     public Dictionary<string, string> PopupsText {
         get {
             Dictionary<string, string> popupsText = new Dictionary<string, string>();
-            popupsText.Add(GameManager.TAG_WELCOME_WINDOW, TEXT_WELCOME);
-            popupsText.Add(GameManager.TAG_MOVEMENT_TUTORIAL, TEXT_MOVEMENT_TUTORIAL);
-            popupsText.Add(GameManager.TAG_COIN_TUTORIAL, TEXT_COIN_TUTORIAL);
-            popupsText.Add(GameManager.TAG_OBSTACLE_TUTORIAL, TEXT_OBSTACLE_TUTORIAL);
-            popupsText.Add(GameManager.TAG_OPEN_LEVEL_TUTORIAL, TEXT_OPEN_LEVEL_TUTORIAL);
+            popupsText.Add(Constants.TAG_WELCOME_WINDOW, TEXT_WELCOME);
+            popupsText.Add(Constants.TAG_MOVEMENT_TUTORIAL, TEXT_MOVEMENT_TUTORIAL);
+            popupsText.Add(Constants.TAG_COIN_TUTORIAL, TEXT_COIN_TUTORIAL);
+            popupsText.Add(Constants.TAG_OBSTACLE_TUTORIAL, TEXT_OBSTACLE_TUTORIAL);
+            popupsText.Add(Constants.TAG_OPEN_LEVEL_TUTORIAL, TEXT_OPEN_LEVEL_TUTORIAL);
 
             return popupsText;
         }

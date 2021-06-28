@@ -14,13 +14,13 @@ public class LevelController : MonoBehaviour {
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _gameManager.currentLevelType = levelType.ToString();
         _transform = transform;
     }
 
     void Update() {
-        if (_gameManager.currentLevelType == GameManager.LEVEL_TYPE_LINEAR)
+        if (_gameManager.currentLevelType == Constants.LEVEL_TYPE_LINEAR)
             _transform.Translate(-Vector3.right * speed * Time.deltaTime);
     }
 }

@@ -13,7 +13,8 @@ public class Pointer : MonoBehaviour {
     private Camera _mainCamera;
     private Vector3 _inputPosition;
     private bool _isTouched;
-    private bool _isEndingTouch;
+    private bool _isTouchEnded;
+    private Transform _transform;
 
     private void Awake() {
         _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
@@ -21,6 +22,7 @@ public class Pointer : MonoBehaviour {
         _pointerCollider = GetComponent<SphereCollider>();
         _layerMask = LayerMask.GetMask(GameManager.LAYER_MASK_WATER);
         _mainCamera = Camera.main;
+        _transform = transform;
     }
 
     private void Update() {
@@ -32,8 +34,13 @@ public class Pointer : MonoBehaviour {
 
         CheckInput();
         RenderTrail();
-        Move();
-        FillLastTrailPointerPosition();
+#if UNITY_EDITOR // TODO: is used in development mode. Remove before release
+        _isTouched = true;
+#endif
+        if (_isTouched) {
+            Move();
+            FillLastTrailPointerPosition();
+        }
     }
 
     private void RenderTrail() {
@@ -45,12 +52,12 @@ public class Pointer : MonoBehaviour {
     private void Move() {
         Ray ray = _mainCamera.ScreenPointToRay(_inputPosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask))
-            transform.position = raycastHit.point;
+            _transform.position = raycastHit.point;
     }
 
     private void FillLastTrailPointerPosition() {
-        if (_isEndingTouch && _isPushSomething) {
-            lastTrailPointerPosition = transform.position;
+        if (_isTouchEnded && _isPushSomething) {
+            lastTrailPointerPosition = _transform.position;
 
             Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
             if (pushableComponent == null) {
@@ -70,14 +77,15 @@ public class Pointer : MonoBehaviour {
     private void CheckInput() { 
         _isTouched = Input.touchCount > 0;
         if (_isTouched) {
-            _inputPosition = Input.GetTouch(0).position;
-            _isEndingTouch = Input.GetTouch(0).phase == TouchPhase.Ended;
+            Touch touch = Input.GetTouch(0);
+            _inputPosition = touch.position;
+            _isTouchEnded = touch.phase == TouchPhase.Ended;
             return;
         }
 #if UNITY_EDITOR
         _inputPosition = Input.mousePosition;
         _isTouched = Input.GetMouseButton(0);
-        _isEndingTouch = Input.GetMouseButtonUp(0);
+        _isTouchEnded = Input.GetMouseButtonUp(0);
 #endif
     }
 

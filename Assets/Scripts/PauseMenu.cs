@@ -2,25 +2,19 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
 
-    private GameManager _gameManager;
-
-    private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
-    }
-
     public void Pause() {
-        _gameManager.Pause();
+        GameManager.instance.Pause();
     }
 
     public void Resume() {
-        _gameManager.Resume();
+        GameManager.instance.Resume();
     }
 
     public void Restart() {
-        _gameManager.Restart();
+        GameManager.instance.Restart();
     }
 
     public void QuitToMainMenu() {
-        _gameManager.QuitToMainMenu();
+        GameManager.instance.QuitToMainMenu();
     }
 }

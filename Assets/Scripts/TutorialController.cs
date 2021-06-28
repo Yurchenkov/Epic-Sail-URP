@@ -5,11 +5,9 @@ public class TutorialController : MonoBehaviour {
     public GameObject tutorialCanvas;
     public Animator handCursorAnimator;
 
-    private GameManager _gameManager;
     private string _tutorialType;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _tutorialType = gameObject.tag;
     }
 
@@ -20,17 +18,17 @@ public class TutorialController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER) && !GameManager.IsTutorialComplete(_tutorialType))
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.IsTutorialComplete(_tutorialType))
             ShowTutorial();
     }
 
     public void ShowTutorial() {
-        _gameManager.Pause();
+        GameManager.instance.Pause();
         StartTutorialAnimation();
     }
 
     private void ResumeGame() {
-        _gameManager.Resume();
+        GameManager.instance.Resume();
     }
 
     private void StartTutorialAnimation() {

@@ -7,7 +7,6 @@ public class Pointer : MonoBehaviour {
     private LayerMask _layerMask;
     private TrailRenderer _trailRenderer;
     private SphereCollider _pointerCollider;
-    private GameManager _gameManager;
     private bool _isPushSomething = false;
     private GameObject _pushedObject;
     private Camera _mainCamera;
@@ -17,19 +16,18 @@ public class Pointer : MonoBehaviour {
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _trailRenderer = GetComponent<TrailRenderer>();
         _pointerCollider = GetComponent<SphereCollider>();
-        _layerMask = LayerMask.GetMask(GameManager.LAYER_MASK_WATER);
+        _layerMask = LayerMask.GetMask(Constants.LAYER_MASK_WATER);
         _mainCamera = Camera.main;
         _transform = transform;
     }
 
     private void Update() {
 #if UNITY_EDITOR
-        GameManager.CompleteTutorial(GameManager.TUTORIAL_TYPE_MOVEMENT); // TODO: is used in development mode. Remove before release
+        GameManager.CompleteTutorial(Constants.TUTORIAL_TYPE_MOVEMENT); // TODO: is used in development mode. Remove before release
 #endif
-        if (_gameManager.isGamePaused || !GameManager.IsTutorialComplete(GameManager.TUTORIAL_TYPE_MOVEMENT))
+        if (GameManager.instance.isGamePaused || !GameManager.IsTutorialComplete(Constants.TUTORIAL_TYPE_MOVEMENT))
             return;
 
         CheckInput();

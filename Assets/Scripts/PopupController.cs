@@ -9,24 +9,22 @@ public class PopupController : MonoBehaviour {
     public bool isDisposable = true;
 
     private Dictionary<string, string> _popupText;
-    private GameManager _gameManager;
     private string _popupType;
 
     private void Awake() {
         PopupTextRepository popupTextRepository = new PopupTextRepository();
 
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _popupText = popupTextRepository.PopupsText;
         _popupType = gameObject.tag;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER) && !GameManager.IsPopupViewed(_popupType))
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.IsPopupViewed(_popupType))
             ShowPopup();
     }
 
     public void ShowPopup() {
-        _gameManager.Pause();
+        GameManager.instance.Pause();
         FillPopupCanvas();
 
         if (isDisposable)
@@ -34,7 +32,7 @@ public class PopupController : MonoBehaviour {
     }
 
     public void ResumeGame() {
-        _gameManager.Resume();
+        GameManager.instance.Resume();
     }
 
     private void FillPopupCanvas() {

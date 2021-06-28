@@ -3,11 +3,9 @@ using UnityEngine;
 public class CoinController : MonoBehaviour {
 
     private float _speed = 250f;
-    private GameManager _gameManager;
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(GameManager.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _transform = transform;
     }
 
@@ -21,13 +19,13 @@ public class CoinController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(GameManager.TAG_PLAYER)) {
+        if (other.CompareTag(Constants.TAG_PLAYER)) {
             IncreaseCoinCounter();
             Destroy(gameObject);
         }
     }
 
     private void IncreaseCoinCounter() {
-        _gameManager.IncreaseLocalCoinCounter();
+        GameManager.instance.IncreaseLocalCoinCounter();
     }
 }

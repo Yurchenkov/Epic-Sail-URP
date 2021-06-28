@@ -18,7 +18,7 @@ public class LevelSwitcher : MonoBehaviour {
     }
 
     IEnumerator LoadLevel(int levelIndex) {
-        transition.SetTrigger("Start");
+        transition.SetTrigger(Constants.ANIMATION_TRIGGER_CROSSFADE);
 
         yield return new WaitForSeconds(_transitionTime);
 

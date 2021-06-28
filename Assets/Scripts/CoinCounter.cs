@@ -4,10 +4,8 @@ using UnityEngine.UI;
 public class CoinCounter : MonoBehaviour {
 
     private Text _coinCounterText;
-    private GameManager _gameManager;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _coinCounterText = GameObject.FindGameObjectWithTag(Constants.TAG_COIN_COUNTER).GetComponent<Text>();
     }
 
@@ -16,6 +14,6 @@ public class CoinCounter : MonoBehaviour {
     }
 
     private void DisplayCoinCount() {
-        _coinCounterText.text = _gameManager.localCoinCounter.ToString();
+        _coinCounterText.text = GameManager.instance.localCoinCounter.ToString();
     }
 }

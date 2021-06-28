@@ -4,12 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public bool isGamePaused = false;
-    public float localCoinCounter = 0f;
+    public static GameManager instance;
+
     public static float totalCoinCounter = 0f;
-    public string currentLevelType;
     public static List<string> completedTutorials = new List<string>();
     public static List<string> viewedPopups = new List<string>();
+
+    public bool isGamePaused = false;
+    public float localCoinCounter = 0f;
+    public string currentLevelType;
+
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance == this)
+            Destroy(gameObject);
+    }
 
     public void Pause() {
         Time.timeScale = 0f;

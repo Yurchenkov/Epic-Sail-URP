@@ -3,11 +3,9 @@ using UnityEngine;
 public class CoinController : MonoBehaviour {
 
     private float _speed = 250f;
-    private GameManager _gameManager;
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _transform = transform;
     }
 
@@ -28,6 +26,6 @@ public class CoinController : MonoBehaviour {
     }
 
     private void IncreaseCoinCounter() {
-        _gameManager.IncreaseLocalCoinCounter();
+        GameManager.instance.IncreaseLocalCoinCounter();
     }
 }

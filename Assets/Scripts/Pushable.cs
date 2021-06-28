@@ -8,11 +8,9 @@ public class Pushable : MonoBehaviour {
 
     [SerializeField] private float _tilt = 1f;
 
-    private GameManager _gameManager;
     private Transform _transform;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _transform = transform;
     }
 
@@ -44,7 +42,7 @@ public class Pushable : MonoBehaviour {
     }
 
     private void Rotate(Vector3 target) {
-        if (_gameManager.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
             SetOpenLevelRotation(target);
             return;
         }

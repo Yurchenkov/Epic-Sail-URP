@@ -5,11 +5,9 @@ public class TutorialController : MonoBehaviour {
     public GameObject tutorialCanvas;
     public Animator handCursorAnimator;
 
-    private GameManager _gameManager;
     private string _tutorialType;
 
     private void Awake() {
-        _gameManager = GameObject.FindGameObjectWithTag(Constants.TAG_GAME_MANAGER).GetComponent<GameManager>();
         _tutorialType = gameObject.tag;
     }
 
@@ -25,12 +23,12 @@ public class TutorialController : MonoBehaviour {
     }
 
     public void ShowTutorial() {
-        _gameManager.Pause();
+        GameManager.instance.Pause();
         StartTutorialAnimation();
     }
 
     private void ResumeGame() {
-        _gameManager.Resume();
+        GameManager.instance.Resume();
     }
 
     private void StartTutorialAnimation() {

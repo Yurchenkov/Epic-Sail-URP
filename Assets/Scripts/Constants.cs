@@ -19,4 +19,6 @@ public class Constants {
     public const string LAYER_MASK_WATER = "Water";
 
     public const int BUILD_INDEX_MAIN_MENU = 0;
+
+    public const string ANIMATION_TRIGGER_CROSSFADE = "Start";
 }

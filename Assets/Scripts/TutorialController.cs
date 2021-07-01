@@ -28,7 +28,7 @@ public class TutorialController : MonoBehaviour {
     }
 
     private void ResumeGame() {
-        GameManager.instance.Resume();
+        GameManager.instance.ResumeAfterTimer();
     }
 
     private void StartTutorialAnimation() {

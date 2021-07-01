@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
         viewedPopups.Add(popupType);
     }
 
-    private void ResumeAfterTimer() {
+    public void ResumeAfterTimer() {
         Time.timeScale = 1f;
         SetPauseGameState(false);
     }

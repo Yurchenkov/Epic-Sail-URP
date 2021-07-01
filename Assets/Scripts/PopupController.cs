@@ -32,7 +32,7 @@ public class PopupController : MonoBehaviour {
     }
 
     public void ResumeGame() {
-        GameManager.instance.Resume();
+        GameManager.instance.ResumeAfterTimer();
     }
 
     private void FillPopupCanvas() {

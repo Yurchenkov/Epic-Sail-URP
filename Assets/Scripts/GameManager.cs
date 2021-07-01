@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     private void OnEnable() {
         _timer.CountdownIsOver += ResumeAfterTimer;
     }
+
     private void OnDisable() {
         _timer.CountdownIsOver -= ResumeAfterTimer;
     }

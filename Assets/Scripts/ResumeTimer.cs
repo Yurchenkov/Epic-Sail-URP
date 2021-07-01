@@ -9,7 +9,6 @@ public class ResumeTimer : MonoBehaviour {
     [SerializeField] private GameObject _timerCanvas;
     [SerializeField] private Animator _timerAnimator;
 
-
     private void Start() {
         _timerAnimator = GetComponent<Animator>();
     }

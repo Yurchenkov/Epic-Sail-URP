@@ -4,8 +4,8 @@ public class CameraFollow : MonoBehaviour {
 
     private Transform _target;
     private Vector3 _offset;
-    private float _smoothTime = 0.3f;
-    private Vector3 _velocity = Vector3.zero;
+    // private float _smoothTime = 0.3f;
+    // private Vector3 _velocity = Vector3.zero;
     private Transform _transform;
 
     private void Awake() {
@@ -19,6 +19,6 @@ public class CameraFollow : MonoBehaviour {
         if (GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
             targetPosition = new Vector3(targetPosition.x, targetPosition.y, 0f);
 
-        _transform.position = Vector3.SmoothDamp(_transform.position, targetPosition, ref _velocity, _smoothTime);
+        _transform.position = targetPosition;
     }
 }

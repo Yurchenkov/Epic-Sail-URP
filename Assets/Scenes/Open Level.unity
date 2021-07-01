@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &90716818 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1974226742644992956, guid: 8bbd8aae58d9b844aac33b3534995514, type: 3}
-  m_PrefabInstance: {fileID: 1974226742554284334}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd9e9520d2c4a7418d62d0413d9f50e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &136920155
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +673,6 @@ GameObject:
   - component: {fileID: 790490122}
   - component: {fileID: 790490121}
   - component: {fileID: 790490124}
-  - component: {fileID: 790490125}
   m_Layer: 0
   m_Name: Coin
   m_TagString: CoinTutorial
@@ -780,21 +768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce7ca21d48a7bf478919221437f7819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &790490125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790490119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupCanvas: {fileID: 1026795778119048940}
-  popupText: {fileID: 1026795778119048939}
-  isDisposable: 1
 --- !u!1 &844418625
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,8 +895,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!114 &844418632
 MonoBehaviour:
@@ -1118,7 +1093,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452159086}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0.7
   m_AngularDrag: 0.7
   m_UseGravity: 1
@@ -1139,8 +1114,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!1 &1523436951
 GameObject:
@@ -1269,8 +1246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!114 &1523436958
 MonoBehaviour:
@@ -1346,7 +1325,6 @@ GameObject:
   - component: {fileID: 1855983146}
   - component: {fileID: 1855983145}
   - component: {fileID: 1855983148}
-  - component: {fileID: 1855983149}
   m_Layer: 0
   m_Name: Coin
   m_TagString: CoinTutorial
@@ -1442,21 +1420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce7ca21d48a7bf478919221437f7819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1855983149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855983143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupCanvas: {fileID: 1026795778119048940}
-  popupText: {fileID: 1026795778119048939}
-  isDisposable: 1
 --- !u!1 &1861367570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1433,6 @@ GameObject:
   - component: {fileID: 1861367573}
   - component: {fileID: 1861367572}
   - component: {fileID: 1861367575}
-  - component: {fileID: 1861367576}
   m_Layer: 0
   m_Name: Coin
   m_TagString: CoinTutorial
@@ -1566,21 +1528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce7ca21d48a7bf478919221437f7819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1861367576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861367570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2b21acbfcc30d4bb688fc1514477de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupCanvas: {fileID: 1026795778119048940}
-  popupText: {fileID: 1026795778119048939}
-  isDisposable: 1
 --- !u!1001 &2021194238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2196,7 +2143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf820151f08896e439bfd68e6248163e, type: 3}
---- !u!1001 &4209816680703763777
+--- !u!1001 &9176911244609462746
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2206,18 +2153,6 @@ PrefabInstance:
     - target: {fileID: 3939853794336139085, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
       propertyPath: m_Name
       value: Boat
-      objectReference: {fileID: 0}
-    - target: {fileID: 4209816679219386626, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
-      propertyPath: _pointer
-      value: 
-      objectReference: {fileID: 90716818}
-    - target: {fileID: 4209816679219386626, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4209816679219386626, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
-      propertyPath: _gameManager
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4460530151881522679, guid: b1cc04d399dd96b4eb1110db95e6ef3c, type: 3}
       propertyPath: m_RootOrder

@@ -3,18 +3,22 @@ using UnityEngine;
 public class Pushable : MonoBehaviour {
 
     public bool isPushed = false;
+    public Vector3 motionStartPoint;
     public Vector3 motionTarget;
     public float speed = 1f;
+    public float forceMultiplier = 50f;
 
     [SerializeField] private float _tilt = 1f;
 
     private Transform _transform;
+    private Rigidbody _rigidbody;
 
     private void Awake() {
         _transform = transform;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if (!isPushed)
             return;
 
@@ -25,8 +29,9 @@ public class Pushable : MonoBehaviour {
     }
 
     private void Move(Vector3 target) {
-        float step = GetStep(target);
-        _transform.position = Vector3.MoveTowards(_transform.position, target, step);
+        Vector3 force = target - motionStartPoint;
+        _rigidbody.AddForce(force * forceMultiplier);
+        isPushed = false;
     }
 
     private float GetStep(Vector3 target) {

@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour {
 
     void Update() {
         GameManager.instance.currentLevelType = levelType.ToString();
-        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR)
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR && !GameManager.instance.isGamePaused)
             _transform.Translate(-Vector3.right * speed * Time.deltaTime);
     }
 }

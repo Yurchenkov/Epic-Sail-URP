@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     public float localCoinCounter = 0f;
     public string currentLevelType;
 
+    [SerializeField] private ResumeTimer _timer;
+
     private void Awake() {
         if (instance == null)
             instance = this;
@@ -21,14 +23,21 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
     }
 
+    private void OnEnable() {
+        _timer.CountdownIsOver += ResumeAfterTimer;
+    }
+
+    private void OnDisable() {
+        _timer.CountdownIsOver -= ResumeAfterTimer;
+    }
+
     public void Pause() {
         Time.timeScale = 0f;
         SetPauseGameState(true);
     }
 
-    public void Resume() {
-        Time.timeScale = 1f;
-        SetPauseGameState(false);
+    public void Resume() { 
+        _timer.StartTimer();
     }
 
     public void Restart() {
@@ -71,4 +80,10 @@ public class GameManager : MonoBehaviour {
     public static void SetPopupAsViewed(string popupType) {
         viewedPopups.Add(popupType);
     }
+
+    public void ResumeAfterTimer() {
+        Time.timeScale = 1f;
+        SetPauseGameState(false);
+    }
+    
 }

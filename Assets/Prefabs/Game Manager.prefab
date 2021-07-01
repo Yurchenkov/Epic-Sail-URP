@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamePaused: 0
   localCoinCounter: 0
+  currentLevelType: 
+  _timer: {fileID: 0}

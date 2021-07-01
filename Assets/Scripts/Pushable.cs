@@ -19,19 +19,25 @@ public class Pushable : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        //if (CompareTag(Constants.TAG_PLAYER) && GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
+        //    _rigidbody.velocity = Vector3.right * 5;
+
         if (!isPushed)
             return;
 
-        Move(motionTarget);
+        Move();
 
         if (CompareTag(Constants.TAG_PLAYER))
             Rotate(motionTarget);
     }
 
-    private void Move(Vector3 target) {
-        Vector3 force = target - motionStartPoint;
-        _rigidbody.AddForce(force * forceMultiplier);
+    private void Move() {     
+        _rigidbody.AddForce(GetForce());
         isPushed = false;
+    }
+
+    private Vector3 GetForce() {
+        return (motionTarget - motionStartPoint) * forceMultiplier;
     }
 
     private float GetStep(Vector3 target) {
@@ -59,7 +65,7 @@ public class Pushable : MonoBehaviour {
         Vector3 direction = GetDirection(target);
         Quaternion fromToRotation = Quaternion.FromToRotation(Vector3.right, direction);
         Quaternion incline = Quaternion.Euler(direction.z * _tilt, 0, -direction.x * _tilt);
-        _transform.rotation = Quaternion.Lerp(_transform.rotation, incline * fromToRotation, GetStep(target));
+        _transform.rotation = Quaternion.Lerp(_transform.rotation, incline * fromToRotation, GetStep(target));     
     }
 
     private void SetLinearLevelRotation(Vector3 target) {

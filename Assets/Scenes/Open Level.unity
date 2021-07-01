@@ -237,6 +237,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3757167968842913884, guid: 01fd59c552e1c0342824ca4dd936442f, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 703660394}
     - target: {fileID: 3757167968842913885, guid: 01fd59c552e1c0342824ca4dd936442f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -587,6 +591,17 @@ MonoBehaviour:
   depthBeforeSubmerged: 1
   displacementAmount: 3
   rigidBody: {fileID: 1452159091}
+--- !u!114 &703660394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 972828940, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
+  m_PrefabInstance: {fileID: 1026795778119048938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582465bf07d0ca244a230d70d540daba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &719387409
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LoseWindow : MonoBehaviour {
+
     public GameObject loseWindowCanvas;
     public Button paymentButton;
 
@@ -13,7 +14,7 @@ public class LoseWindow : MonoBehaviour {
     private GameObject _obstacle;
     private Text _paymentButtonText;
 
-    private void Start() {
+    private void Awake() {
         _paymentButtonText = paymentButton.GetComponentInChildren<Text>();
         _continuationFee = _initialFee;
         _paymentButtonText.text = _continuationFee.ToString();
@@ -22,14 +23,13 @@ public class LoseWindow : MonoBehaviour {
     public void PayToContinue() {
         _obstacle.SetActive(false);
         GameManager.totalCoinCounter -= _continuationFee;
-        if (_continuationFee < _maximumFee) {
-            _continuationFee += _feeIncrement;
-        }
+        if (_continuationFee < _maximumFee) _continuationFee += _feeIncrement;
+        else _continuationFee = _maximumFee;
         _paymentButtonText.text = _continuationFee.ToString();
         GameManager.instance.Resume();
     }
 
-    public bool CheckPayability() {
+    public bool IsPayable() {
         return GameManager.totalCoinCounter > _continuationFee;
     }
 
@@ -37,7 +37,11 @@ public class LoseWindow : MonoBehaviour {
         _obstacle = obstacle;
         GameManager.instance.Pause();
         loseWindowCanvas.SetActive(true);
-        if (CheckPayability()) {
+        ShowPaymentButton();
+    }
+
+    private void ShowPaymentButton() {
+        if (IsPayable()) {
             paymentButton.enabled = true;
         } else {
             paymentButton.enabled = false;

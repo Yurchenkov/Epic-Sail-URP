@@ -1,10 +1,14 @@
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
+    private LoseWindow _loseWindow;
 
+    private void Start() {
+        _loseWindow = GameObject.FindObjectOfType<LoseWindow>();
+    }
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag(Constants.TAG_PLAYER)) {
-            GameManager.instance.Restart();
+            _loseWindow.OpenLoseWindow(this.gameObject);
         }
     }
 }

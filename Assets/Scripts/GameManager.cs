@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public float localCoinCounter = 0f;
     public string currentLevelType;
 
-    [SerializeField] private ResumeTimer _timer;
+    public ResumeTimer _timer;
 
     private void Awake() {
         if (instance == null)

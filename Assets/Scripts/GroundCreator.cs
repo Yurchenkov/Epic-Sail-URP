@@ -30,17 +30,18 @@ public class GroundCreator : MonoBehaviour {
     public void CreatePiece() {
         GroundPiece newPiece = Instantiate(_pieces[Random.Range(0, _pieces.Length)], transform);
         Vector3 instantiatePosition;
+
         if (_createdPieces.Count > 0)
             instantiatePosition = _createdPieces[_createdPieces.Count - 1].endPosition.position - newPiece.startPosition.localPosition * newPiece.scaleX;
         else
             instantiatePosition = Vector3.zero;
+
         newPiece.transform.position = instantiatePosition;
         _createdPieces.Add(newPiece);
     }
 
-    public void CreatePiece(int count) {
-        for (int i = 0; i < count; i++) {
-            CreatePiece();
-        }
+    private void CreatePiece(int count) {
+        for (int i = 0; i < count; i++) 
+            CreatePiece();      
     }
 }

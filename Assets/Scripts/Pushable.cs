@@ -26,6 +26,7 @@ public class Pushable : MonoBehaviour {
 
     private void Move(Vector3 target) {
         float step = GetStep(target);
+        target.y = _transform.position.y;
         _transform.position = Vector3.MoveTowards(_transform.position, target, step);
     }
 

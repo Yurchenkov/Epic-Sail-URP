@@ -173,22 +173,6 @@ MonoBehaviour:
   startPosition: {fileID: 3370632154796154979}
   endPosition: {fileID: 2596190269878757560}
   scaleX: 0
---- !u!114 &2851994188435141880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9210994773547168101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPushed: 0
-  motionTarget: {x: 0, y: 0, z: 0}
-  speed: 1
-  _tilt: 1
 --- !u!1 &7890610151034641373
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +203,22 @@ Transform:
   m_Father: {fileID: 6994899463546532060}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2851994188435141880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210994773547168101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushed: 0
+  motionTarget: {x: 0, y: 0, z: 0}
+  speed: 1
+  _tilt: 1
 --- !u!1001 &190597744150439193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bfdf41e2cf4820418f978de21dcb5f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bfdf41e2cf4820418f978de21dcb5f4, type: 3}
       propertyPath: m_LocalPosition.z

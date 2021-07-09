@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundCreator : MonoBehaviour {
+
     public static GroundCreator instance;
+
     [SerializeField] private Transform _boat;
     [SerializeField] private GroundPiece[] _pieces;
 
@@ -16,22 +18,29 @@ public class GroundCreator : MonoBehaviour {
     }
 
     private void Start() {
-        createPiece();
-        createPiece();
+        CreatePiece(2);
     }
 
     public void deletePiece(GameObject pieceObject) {
         Destroy(pieceObject);
         _createdPieces.RemoveAt(0);
-        createPiece();
+        CreatePiece();
     }
 
-    public void createPiece() {
+    public void CreatePiece() {
         GroundPiece newPiece = Instantiate(_pieces[Random.Range(0, _pieces.Length)], transform);
         Vector3 instantiatePosition;
-        if (_createdPieces.Count > 0) instantiatePosition = _createdPieces[_createdPieces.Count - 1].endPosition.position - newPiece.startPosition.localPosition * newPiece.scaleX;
-        else instantiatePosition = Vector3.zero;
+        if (_createdPieces.Count > 0)
+            instantiatePosition = _createdPieces[_createdPieces.Count - 1].endPosition.position - newPiece.startPosition.localPosition * newPiece.scaleX;
+        else
+            instantiatePosition = Vector3.zero;
         newPiece.transform.position = instantiatePosition;
         _createdPieces.Add(newPiece);
+    }
+
+    public void CreatePiece(int count) {
+        for (int i = 0; i < count; i++) {
+            CreatePiece();
+        }
     }
 }

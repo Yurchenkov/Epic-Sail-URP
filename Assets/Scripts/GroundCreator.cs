@@ -9,12 +9,14 @@ public class GroundCreator : MonoBehaviour {
     [SerializeField] private GroundPiece[] _pieces;
 
     private List<GroundPiece> _createdPieces = new List<GroundPiece>();
+    private Transform _transform;
 
     private void Awake() {
         if (instance == null)
             instance = this;
         else if (instance == this)
             Destroy(gameObject);
+        _transform = transform;
     }
 
     private void Start() {
@@ -28,7 +30,7 @@ public class GroundCreator : MonoBehaviour {
     }
 
     public void CreatePiece() {
-        GroundPiece newPiece = Instantiate(_pieces[Random.Range(0, _pieces.Length)], transform);
+        GroundPiece newPiece = Instantiate(_pieces[Random.Range(0, _pieces.Length)], _transform);
         Vector3 instantiatePosition;
 
         if (_createdPieces.Count > 0)
@@ -37,6 +39,9 @@ public class GroundCreator : MonoBehaviour {
             instantiatePosition = Vector3.zero;
 
         newPiece.transform.position = instantiatePosition;
+
+        CoinGenerator.instance.CreateCoin(newPiece.waterArea, 10);
+
         _createdPieces.Add(newPiece);
     }
 

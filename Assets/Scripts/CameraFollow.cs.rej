@@ -1,0 +1,10 @@
+diff a/Assets/Scripts/CameraFollow.cs b/Assets/Scripts/CameraFollow.cs	(rejected hunks)
+@@ -14,7 +14,7 @@
+         _transform = transform;
+     }
+ 
+-    private void LateUpdate() {
++    private void FixedUpdate() {
+         Vector3 targetPosition = _target.position + _offset;
+         if (GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
+             targetPosition = new Vector3(targetPosition.x, targetPosition.y, 0f);

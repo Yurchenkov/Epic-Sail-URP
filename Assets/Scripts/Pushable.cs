@@ -12,15 +12,21 @@ public class Pushable : MonoBehaviour {
 
     private Transform _transform;
     private Rigidbody _rigidbody;
+    private bool _isDistabilisation = false;
+    private bool _isTilt = false;
+    private Vector3 _targetDirection;
 
     private void Awake() {
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
+        _targetDirection = _transform.rotation.eulerAngles;
     }
 
     private void FixedUpdate() {
         //if (CompareTag(Constants.TAG_PLAYER) && GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
         //    _rigidbody.velocity = Vector3.right * 5;
+
+        TiltTo();
 
         if (!isPushed)
             return;
@@ -29,9 +35,10 @@ public class Pushable : MonoBehaviour {
 
         if (CompareTag(Constants.TAG_PLAYER))
             Rotate(motionTarget);
+
     }
 
-    private void Move() {     
+    private void Move() {
         _rigidbody.AddForce(GetForce());
         isPushed = false;
     }
@@ -57,7 +64,6 @@ public class Pushable : MonoBehaviour {
             SetOpenLevelRotation(target);
             return;
         }
-
         SetLinearLevelRotation(target);
     }
 
@@ -65,11 +71,23 @@ public class Pushable : MonoBehaviour {
         Vector3 direction = GetDirection(target);
         Quaternion fromToRotation = Quaternion.FromToRotation(Vector3.right, direction);
         Quaternion incline = Quaternion.Euler(direction.z * _tilt, 0, -direction.x * _tilt);
-        _transform.rotation = Quaternion.Lerp(_transform.rotation, incline * fromToRotation, GetStep(target));     
+        _transform.rotation = Quaternion.Lerp(_transform.rotation, incline * fromToRotation, GetStep(target));
     }
 
     private void SetLinearLevelRotation(Vector3 target) {
         Vector3 direction = GetDirection(target);
-        _transform.rotation = Quaternion.Euler(direction.z, 0, -direction.x);
+        _targetDirection = new Vector3(direction.z * _tilt, 0, -direction.x * _tilt);
+        _isDistabilisation = true;
+        _isTilt = true;
+    }
+
+    private void TiltTo() {
+        Quaternion targetRotation = Quaternion.Euler(_targetDirection);
+        if (_transform.rotation != targetRotation && _isDistabilisation) {
+            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, Quaternion.Euler(_targetDirection), .35f);
+        } else if (_isTilt) {
+            _targetDirection = Vector3.zero;
+            _isTilt = false;
+        } else _isDistabilisation = false;
     }
 }

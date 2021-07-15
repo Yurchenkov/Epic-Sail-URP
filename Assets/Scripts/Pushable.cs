@@ -71,7 +71,9 @@ public class Pushable : MonoBehaviour {
         Vector3 direction = GetDirection(target);
         Quaternion fromToRotation = Quaternion.FromToRotation(Vector3.right, direction);
         Quaternion incline = Quaternion.Euler(direction.z * _tilt, 0, -direction.x * _tilt);
-        _transform.rotation = Quaternion.Lerp(_transform.rotation, incline * fromToRotation, GetStep(target));
+        _targetDirection = (fromToRotation * incline).eulerAngles;
+        _isDistabilisation = true;
+        
     }
 
     private void SetLinearLevelRotation(Vector3 target) {

@@ -15,18 +15,24 @@ public class Pushable : MonoBehaviour {
     private bool _isDistabilisation = false;
     private bool _isTilt = false;
     private Vector3 _targetDirection;
+    [SerializeField] private float _angleX, _angleZ;
+    private int tiltCount = 3;
+    private float tiltCoef =0;
 
     private void Awake() {
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _targetDirection = _transform.rotation.eulerAngles;
+        _angleX = _transform.rotation.x;
+        _angleZ = transform.rotation.z;
     }
 
     private void FixedUpdate() {
         //if (CompareTag(Constants.TAG_PLAYER) && GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
         //    _rigidbody.velocity = Vector3.right * 5;
 
-        TiltTo();
+        //TiltTo();
+        //Tilt();
 
         if (!isPushed)
             return;
@@ -36,6 +42,9 @@ public class Pushable : MonoBehaviour {
         if (CompareTag(Constants.TAG_PLAYER))
             Rotate(motionTarget);
 
+    }
+    private void Update() {
+        Tilt();
     }
 
     private void Move() {
@@ -60,36 +69,76 @@ public class Pushable : MonoBehaviour {
     }
 
     private void Rotate(Vector3 target) {
-        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
-            SetOpenLevelRotation(target);
-            return;
-        }
-        SetLinearLevelRotation(target);
-    }
-
-    private void SetOpenLevelRotation(Vector3 target) {
-        Vector3 direction = GetDirection(target);
-        Quaternion fromToRotation = Quaternion.FromToRotation(Vector3.right, direction);
-        Quaternion incline = Quaternion.Euler(direction.z * _tilt, 0, -direction.x * _tilt);
-        _targetDirection = (fromToRotation * incline).eulerAngles;
-        _isDistabilisation = true;
-        
-    }
-
-    private void SetLinearLevelRotation(Vector3 target) {
-        Vector3 direction = GetDirection(target);
-        _targetDirection = new Vector3(direction.z * _tilt, 0, -direction.x * _tilt);
-        _isDistabilisation = true;
+        //if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
+        //    SetOpenLevelRotation(target);
+        //    return;
+        //}
+        //SetLinearLevelRotation(target);
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) RotateBoat();
+        FindTiltAngle();
         _isTilt = true;
     }
 
-    private void TiltTo() {
-        Quaternion targetRotation = Quaternion.Euler(_targetDirection);
-        if (_transform.rotation != targetRotation && _isDistabilisation) {
-            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, Quaternion.Euler(_targetDirection), .35f);
-        } else if (_isTilt) {
-            _targetDirection = Vector3.zero;
+    //private void SetOpenLevelRotation(Vector3 target) {
+    //    Vector3 direction = GetDirection(target);
+    //    Quaternion fromToRotation = Quaternion.FromToRotation(Vector3.right, direction);
+    //    Quaternion incline = Quaternion.Euler(direction.z * _tilt, direction.y, -direction.x * _tilt);
+    //    _targetDirection = (fromToRotation * incline).eulerAngles;
+    //    _isDistabilisation = true;
+
+    //}
+
+    //private void SetLinearLevelRotation(Vector3 target) {
+    //    Vector3 direction = GetDirection(target);
+    //    _targetDirection = new Vector3(direction.z * _tilt, 0, -direction.x * _tilt);
+    //    _isDistabilisation = true;
+    //    _isTilt = true;
+    //}
+
+    //private void TiltTo() {
+    //    Quaternion targetRotation = Quaternion.Euler(_targetDirection);
+    //    _transform.rotation = Quaternion.Euler(_transform.rotation.x, targetRotation.y, transform.rotation.z);
+    //    if (_transform.rotation != targetRotation && _isDistabilisation) {
+    //        _transform.localRotation = Quaternion.RotateTowards(_transform.rotation, Quaternion.Euler(_targetDirection), .35f);
+    //    } else if (_isTilt) {
+    //        _targetDirection = Vector3.zero;
+    //        _isTilt = false;
+    //    } else _isDistabilisation = false;
+    //}
+
+    private void RotateBoat() {
+        Vector3 direction = GetDirection(motionTarget);
+        direction.y = 0;
+        Quaternion tiltVector = Quaternion.FromToRotation(Vector3.right, direction).normalized;
+        _transform.localRotation = tiltVector;
+    }
+
+    private void FindTiltAngle() {
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
+            _angleX = 0;
+            _angleZ = Mathf.Clamp((motionStartPoint - motionTarget).magnitude * 3, -20, 20);
+        } else {
+            _angleX = Mathf.Clamp((motionTarget - motionStartPoint).z * 3, -20, 20);
+            _angleZ = Mathf.Clamp((motionStartPoint - motionTarget).x * 3, -20, 20);
+        }
+        
+    }
+
+    private void Tilt() {
+        Quaternion rotation = Quaternion.Euler(_angleX, _transform.rotation.eulerAngles.y, _angleZ);
+        if (_transform.localRotation != rotation) {
+            _transform.localRotation = Quaternion.RotateTowards(_transform.rotation, rotation, 0.5f);
+        } else if (tiltCount > 0 && _isTilt) {
+            _angleX *= -.8f;
+            _angleZ *= -.8f;
+            tiltCount--;
+        } else if(_isTilt){
+            _angleX = 0;
+            _angleZ = 0;
+            tiltCount = 3;
             _isTilt = false;
-        } else _isDistabilisation = false;
+            tiltCoef = 0;
+        }
+        tiltCoef += Time.deltaTime;
     }
 }

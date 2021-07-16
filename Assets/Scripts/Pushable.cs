@@ -47,7 +47,7 @@ public class Pushable : MonoBehaviour {
     }
     private void Update() {
         Tilt();
-        RotateBoat();
+        //RotateBoat();
     }
 
     private void Move() {
@@ -129,7 +129,7 @@ public class Pushable : MonoBehaviour {
     }
 
     private void Tilt() {
-        Quaternion rotation = Quaternion.Euler(_angleX, _transform.rotation.eulerAngles.y, _angleZ);
+        Quaternion rotation = Quaternion.Euler(_angleX, _rotateDirection.eulerAngles.y, _angleZ);
         if (_transform.localRotation != rotation) {
             _transform.localRotation = Quaternion.RotateTowards(_transform.rotation, rotation, 0.5f);
         } else if (tiltCount > 0 && _isTilt) {

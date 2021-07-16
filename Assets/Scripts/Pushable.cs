@@ -15,6 +15,7 @@ public class Pushable : MonoBehaviour {
     private bool _isDistabilisation = false;
     private bool _isTilt = false;
     private Vector3 _targetDirection;
+    private Quaternion _rotateDirection;
     [SerializeField] private float _angleX, _angleZ;
     private int tiltCount = 3;
     private float tiltCoef =0;
@@ -25,6 +26,7 @@ public class Pushable : MonoBehaviour {
         _targetDirection = _transform.rotation.eulerAngles;
         _angleX = _transform.rotation.x;
         _angleZ = transform.rotation.z;
+        _rotateDirection = _transform.rotation;
     }
 
     private void FixedUpdate() {
@@ -45,6 +47,7 @@ public class Pushable : MonoBehaviour {
     }
     private void Update() {
         Tilt();
+        RotateBoat();
     }
 
     private void Move() {
@@ -74,7 +77,11 @@ public class Pushable : MonoBehaviour {
         //    return;
         //}
         //SetLinearLevelRotation(target);
-        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) RotateBoat();
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
+            Vector3 direction = GetDirection(motionTarget);
+            direction.y = 0;
+            _rotateDirection = Quaternion.FromToRotation(Vector3.right, direction).normalized;
+        }
         FindTiltAngle();
         _isTilt = true;
     }
@@ -107,10 +114,7 @@ public class Pushable : MonoBehaviour {
     //}
 
     private void RotateBoat() {
-        Vector3 direction = GetDirection(motionTarget);
-        direction.y = 0;
-        Quaternion tiltVector = Quaternion.FromToRotation(Vector3.right, direction).normalized;
-        _transform.localRotation = tiltVector;
+        _transform.localRotation = Quaternion.Slerp(_transform.rotation, _rotateDirection, .1f);
     }
 
     private void FindTiltAngle() {

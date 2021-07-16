@@ -7,6 +7,7 @@ public class GroundCreator : MonoBehaviour {
 
     [SerializeField] private Transform _boat;
     [SerializeField] private GroundPiece[] _pieces;
+    [SerializeField] private int coinCount; //TODO: Delete after test
 
     private List<GroundPiece> _createdPieces = new List<GroundPiece>();
     private Transform _transform;
@@ -40,7 +41,7 @@ public class GroundCreator : MonoBehaviour {
 
         newPiece.transform.position = instantiatePosition;
 
-        CoinGenerator.instance.CreateCoin(newPiece.waterArea, 10);
+        CoinGenerator.instance.CreateObject(newPiece.waterArea, coinCount);
 
         _createdPieces.Add(newPiece);
     }

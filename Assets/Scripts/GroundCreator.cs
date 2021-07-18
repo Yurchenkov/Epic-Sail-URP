@@ -47,7 +47,7 @@ public class GroundCreator : MonoBehaviour {
     }
 
     private void CreatePiece(int count) {
-        for (int i = 0; i < count; i++) 
-            CreatePiece();      
+        for (int i = 0; i < count; i++)
+            CreatePiece();
     }
 }

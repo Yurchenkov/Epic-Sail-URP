@@ -8,7 +8,6 @@ public class CoinGenerator : MonoBehaviour {
     public GameObject coinPrefab;
 
     private Transform _transform;
-
     private List<Vector3> _positions;
 
     private void Awake() {
@@ -37,7 +36,7 @@ public class CoinGenerator : MonoBehaviour {
     private void FillPositionList(Transform waterArea) {
         Bounds boundsArea = waterArea.GetComponent<Renderer>().bounds;
         Bounds boundsObject = coinPrefab.GetComponent<Renderer>().bounds;
-        float maxObjectSize = Mathf.Max(boundsObject.size.x, boundsObject.size.z); Debug.Log(maxObjectSize);
+        float maxObjectSize = Mathf.Max(boundsObject.size.x, boundsObject.size.z);
         int x = (int)(boundsArea.size.x / maxObjectSize);
         int z = (int)(boundsArea.size.z / maxObjectSize - 4);
         _positions = new List<Vector3>();

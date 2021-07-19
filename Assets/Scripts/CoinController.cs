@@ -30,6 +30,7 @@ public class CoinController : MonoBehaviour {
     }
 
     private void OnBecameInvisible() {
-        if (GameManager.instance.currentLevelType != Constants.LEVEL_TYPE_OPEN) Destroy(gameObject);        
+        if (!GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_OPEN))
+            Destroy(gameObject);        
     }
 }

@@ -12,6 +12,6 @@ public class GroundPiece : MonoBehaviour {
     }
 
     private void OnBecameInvisible() {
-        GroundCreator.instance.deletePiece(gameObject);
+        GroundCreator.instance.DeletePiece(gameObject);
     }
 }

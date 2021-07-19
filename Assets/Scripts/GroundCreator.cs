@@ -17,6 +17,7 @@ public class GroundCreator : MonoBehaviour {
             instance = this;
         else if (instance == this)
             Destroy(gameObject);
+
         _transform = transform;
     }
 
@@ -24,7 +25,7 @@ public class GroundCreator : MonoBehaviour {
         CreatePiece(2);
     }
 
-    public void deletePiece(GameObject pieceObject) {
+    public void DeletePiece(GameObject pieceObject) {
         Destroy(pieceObject);
         _createdPieces.RemoveAt(0);
         CreatePiece();
@@ -38,11 +39,8 @@ public class GroundCreator : MonoBehaviour {
             instantiatePosition = _createdPieces[_createdPieces.Count - 1].endPosition.position - newPiece.startPosition.localPosition * newPiece.scaleX;
         else
             instantiatePosition = Vector3.zero;
-
         newPiece.transform.position = instantiatePosition;
-
         CoinGenerator.instance.CreateObject(newPiece.waterArea, coinCount);
-
         _createdPieces.Add(newPiece);
     }
 

@@ -236,6 +236,7 @@ MonoBehaviour:
   _boat: {fileID: 240127970}
   _pieces:
   - {fileID: -3116357935048096161, guid: c829ccfdf82de904088ee322a26aa74e, type: 3}
+  coinCount: 5
 --- !u!114 &1609713890
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,4 +28,9 @@ public class CoinController : MonoBehaviour {
     private void IncreaseCoinCounter() {
         GameManager.instance.IncreaseLocalCoinCounter();
     }
+
+    private void OnBecameInvisible() {
+        if (!GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_OPEN))
+            Destroy(gameObject);        
+    }
 }

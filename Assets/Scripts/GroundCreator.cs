@@ -7,7 +7,8 @@ public class GroundCreator : MonoBehaviour {
 
     [SerializeField] private Transform _boat;
     [SerializeField] private GroundPiece[] _pieces;
-    [SerializeField] private int coinCount; //TODO: Delete after test
+    [SerializeField] private int _coinCount; //TODO: Delete after test
+    [SerializeField] private int _obstacleCount;
 
     private List<GroundPiece> _createdPieces = new List<GroundPiece>();
     private Transform _transform;
@@ -40,7 +41,8 @@ public class GroundCreator : MonoBehaviour {
         else
             instantiatePosition = Vector3.zero;
         newPiece.transform.position = instantiatePosition;
-        CoinGenerator.instance.CreateObject(newPiece.waterArea, coinCount);
+        ObjectGeneratorByRandom.instance.FillWaterArea(newPiece.waterArea, _coinCount, _obstacleCount);
+        //LineObjectGenerator.instance.FillWaterArea(newPiece.waterArea);
         _createdPieces.Add(newPiece);
     }
 

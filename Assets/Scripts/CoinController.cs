@@ -14,8 +14,8 @@ public class CoinController : MonoBehaviour {
     }
 
     private void Rotate() {
-        Quaternion rotation = Quaternion.Euler(0, Time.deltaTime * _speed, 0);
-        _transform.rotation *= rotation;
+        Quaternion rotation = Quaternion.Euler(0,Time.time * _speed, 0);
+        _transform.rotation = rotation;
     }
 
     private void OnTriggerEnter(Collider other) {

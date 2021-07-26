@@ -237,8 +237,8 @@ MonoBehaviour:
   _boat: {fileID: 240127970}
   _pieces:
   - {fileID: -3116357935048096161, guid: c829ccfdf82de904088ee322a26aa74e, type: 3}
-  _coinCount: 0
-  _obstacleCount: 3
+  _coinCount: 3
+  _obstacleCount: 5
 --- !u!114 &1609713890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1165904780449564473, guid: 3e3a7d6a877ce884f8eca5692b420367, type: 3}
   obstaclePrefab: {fileID: 1639647710033680457, guid: 4d5bfbf7528c52346bc8ca629331af7c, type: 3}
-  _coinCount: 0
+  _coinCount: 3
   _obstacleCount: 0
   _gridWidth: 3
   _maxCoinPerTrail: 8
@@ -287,7 +287,6 @@ MonoBehaviour:
   obstaclePrefab: {fileID: 1639647710033680457, guid: 4d5bfbf7528c52346bc8ca629331af7c, type: 3}
   _gridWidth: 3
   _maxCoinPerTrail: 8
-  _maxCoinPerLIne: 0
 --- !u!1001 &1630433723
 PrefabInstance:
   m_ObjectHideFlags: 0

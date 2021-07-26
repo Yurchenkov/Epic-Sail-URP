@@ -922,8 +922,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!114 &844418632
 MonoBehaviour:
@@ -1118,7 +1120,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452159086}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0.7
   m_AngularDrag: 0.7
   m_UseGravity: 1
@@ -1139,8 +1141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!1 &1523436951
 GameObject:
@@ -1269,8 +1273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!114 &1523436958
 MonoBehaviour:

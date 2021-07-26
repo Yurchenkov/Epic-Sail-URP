@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!1 &4281625758074343934
 GameObject:
@@ -136,7 +138,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4359718749430745337}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 0, z: 10}
@@ -154,8 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!114 &-3116357935048096161
 MonoBehaviour:
@@ -173,6 +177,20 @@ MonoBehaviour:
   endPosition: {fileID: 2596190269878757560}
   scaleX: 0
   waterArea: {fileID: 8746401579311079332}
+--- !u!64 &8757463693015255197
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663209760517433958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -470067213634067786, guid: 1bfdf41e2cf4820418f978de21dcb5f4, type: 3}
 --- !u!114 &2851994188435141880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +204,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
   motionTarget: {x: 0, y: 0, z: 0}
   speed: 1
+  forceMultiplier: 50
   _tilt: 1
 --- !u!1 &7890610151034641373
 GameObject:

@@ -41,8 +41,8 @@ public class GroundCreator : MonoBehaviour {
         else
             instantiatePosition = Vector3.zero;
         newPiece.transform.position = instantiatePosition;
-        //ObjectGeneratorByRandom.instance.FillWaterArea(newPiece.waterArea, _coinCount, _obstacleCount);
-        LinearObjectsGenerator.instance.FillWaterArea(newPiece.waterArea);
+        ObjectGeneratorByRandom.instance.FillWaterArea(newPiece.waterArea, _coinCount, _obstacleCount);
+        //LinearObjectsGenerator.instance.FillWaterArea(newPiece.waterArea);
         _createdPieces.Add(newPiece);
     }
 

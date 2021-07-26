@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour {
 
-    public Vector3 lastTrailPointerPosition;
-
+    private Vector3 _startPoint;
+    private Vector3 _endPoint;
     private LayerMask _layerMask;
     private TrailRenderer _trailRenderer;
     private SphereCollider _pointerCollider;
@@ -12,6 +12,7 @@ public class Pointer : MonoBehaviour {
     private Camera _mainCamera;
     private Vector3 _inputPosition;
     private bool _isTouched;
+    private bool _isTouchStarted;
     private bool _isTouchEnded;
     private Transform _transform;
 
@@ -30,15 +31,39 @@ public class Pointer : MonoBehaviour {
         if (GameManager.instance.isGamePaused || !GameManager.IsTutorialComplete(Constants.TUTORIAL_TYPE_MOVEMENT))
             return;
 
-        CheckInput();
+        CalculateInput();
         RenderTrail();
+
 #if UNITY_EDITOR // TODO: is used in development mode. Remove before release
         _isTouched = true;
 #endif
+
         if (_isTouched) {
             Move();
-            FillLastTrailPointerPosition();
+            SetPushableObjectParams();
         }
+    }
+
+    private void CalculateInput() {
+        _isTouched = Input.touchCount > 0;
+        if (_isTouched) {
+            Touch touch = Input.GetTouch(0);
+            _inputPosition = touch.position;
+            _isTouchStarted = touch.phase == TouchPhase.Began;
+            _isTouchEnded = touch.phase == TouchPhase.Ended;
+            _startPoint = _isTouchStarted ? _transform.position : _startPoint;
+            _endPoint = _isTouchEnded ? _transform.position : _endPoint;
+            return;
+        }
+
+#if UNITY_EDITOR
+        _inputPosition = Input.mousePosition;
+        _isTouched = Input.GetMouseButton(0);
+        _isTouchStarted = Input.GetMouseButtonDown(0);
+        _isTouchEnded = Input.GetMouseButtonUp(0);
+        _endPoint = _isTouchEnded ? _transform.position : _endPoint;
+        _startPoint = _isTouchStarted ? _transform.position : _startPoint;
+#endif
     }
 
     private void RenderTrail() {
@@ -53,10 +78,8 @@ public class Pointer : MonoBehaviour {
             _transform.position = raycastHit.point;
     }
 
-    private void FillLastTrailPointerPosition() {
+    private void SetPushableObjectParams() {
         if (_isTouchEnded && _isPushSomething) {
-            lastTrailPointerPosition = _transform.position;
-
             Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
             if (pushableComponent == null) {
                 _isPushSomething = false;
@@ -65,26 +88,12 @@ public class Pointer : MonoBehaviour {
             }
 
             pushableComponent.isPushed = _isPushSomething;
-            pushableComponent.motionTarget = lastTrailPointerPosition;
+            pushableComponent.motionStartPoint = _startPoint;
+            pushableComponent.motionTarget = _endPoint;
 
             _isPushSomething = false;
             _pushedObject = null;
         }
-    }
-
-    private void CheckInput() { 
-        _isTouched = Input.touchCount > 0;
-        if (_isTouched) {
-            Touch touch = Input.GetTouch(0);
-            _inputPosition = touch.position;
-            _isTouchEnded = touch.phase == TouchPhase.Ended;
-            return;
-        }
-#if UNITY_EDITOR
-        _inputPosition = Input.mousePosition;
-        _isTouched = Input.GetMouseButton(0);
-        _isTouchEnded = Input.GetMouseButtonUp(0);
-#endif
     }
 
     private void OnTriggerEnter(Collider other) {

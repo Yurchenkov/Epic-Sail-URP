@@ -6,20 +6,19 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     public static ObjectGeneratorByRandom instance;
 
     public GameObject coinPrefab;
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefabs;
+    
 
     [SerializeField] private int _coinCount;
     [SerializeField] private int _obstacleCount;
     [SerializeField] private int _gridWidth = 0;
-    [SerializeField] private int _maxCoinPerTrail = 8;
-
 
     private int _gridLength = 0;
     private float _offsetZ;
     private float _offsetX;
     private Transform _transform;
     private List<Cell> _pos;
-    private Vector3 _bungVector = new Vector3(-10, -10, -10);
+    private bool isFirstPiece = true;
 
     private void Awake() {
         if (instance == null)
@@ -35,11 +34,15 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     }
 
     public void FillWaterArea(Transform waterArea, int coinCount, int obstacleCount) {
-        _coinCount = coinCount;
-        _obstacleCount = obstacleCount;
-        CreateListPosition(waterArea);
-        FillGridWithObjects(obstaclePrefab, _obstacleCount);
-        FillGridWithObjects(coinPrefab, _coinCount);
+        if (!isFirstPiece) {
+            _coinCount = coinCount;
+            _obstacleCount = obstacleCount;
+            CreateListPosition(waterArea);
+            FillGridWithRandomObjects(_obstacleCount);
+            FillGridWithObjects(coinPrefab, _coinCount);
+        } else {
+            isFirstPiece = false;
+        }
     }
 
     private void FillGridWithObjects(GameObject objectPrefab, int count) {
@@ -56,77 +59,36 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
                     CreateObject(objectPosition, objectPrefab);
                     Cell tempCell = _pos[index];
                     _pos.RemoveAt(index);
-                    DeleteElementsAtDepth(tempCell, rowDepth, columnDepth, 0);
+                    DeleteElementsAtDepth(tempCell, rowDepth, columnDepth);
                 } else {
-                    placedObject--;
                     _pos.RemoveAt(index);
+                    placedObject--;
                 }
-
             }
         }
     }
 
-    private void DeleteElementsAtDepth(Cell cell, int rowDepth, int columnDepth, int distributionDirection) {
-        if (rowDepth > 1 || columnDepth > 1) {
-            switch (distributionDirection) {
-                case 0:
-                    if (cell.Top != null)
-                        DeleteElementsAtDepth(cell.Top, rowDepth, columnDepth - 1, 1);
-                    if (cell.Right != null)
-                        DeleteElementsAtDepth(cell.Right, rowDepth - 1, columnDepth, 2);
-                    if (cell.Down != null)
-                        DeleteElementsAtDepth(cell.Down, rowDepth, columnDepth - 1, 3);
-                    if (cell.Left != null)
-                        DeleteElementsAtDepth(cell.Left, rowDepth - 1, columnDepth, 4);
-                    cell.Position = _bungVector;
-                    DeletePositionsElement(cell);
-                    break;
-
-                case 1:
-                    if (cell.Top != null)
-                        DeleteElementsAtDepth(cell.Top, rowDepth, columnDepth - 1, 1);
-                    if (cell.Right != null)
-                        DeleteElementsAtDepth(cell.Right, rowDepth - 1, columnDepth, 2);
-                    if (cell.Left != null)
-                        DeleteElementsAtDepth(cell.Left, rowDepth - 1, columnDepth, 4);
-                    cell.Position = _bungVector;
-                    DeletePositionsElement(cell);
-                    break;
-
-                case 2:
-                    if (cell.Left != null)
-                        DeleteElementsAtDepth(cell.Left, rowDepth - 1, columnDepth, 2);
-                    cell.Position = _bungVector;
-                    DeletePositionsElement(cell);
-                    break;
-
-                case 3:
-                    if (cell.Right != null)
-                        DeleteElementsAtDepth(cell.Right, rowDepth - 1, columnDepth, 2);
-                    if (cell.Down != null)
-                        DeleteElementsAtDepth(cell.Down, rowDepth, columnDepth - 1, 3);
-                    if (cell.Left != null)
-                        DeleteElementsAtDepth(cell.Left, rowDepth - 1, columnDepth, 4);
-                    cell.Position = _bungVector;
-                    DeletePositionsElement(cell);
-                    break;
-
-                case 4:
-                    if (cell.Right != null)
-                        DeleteElementsAtDepth(cell.Right, rowDepth - 1, columnDepth, 4);
-                    cell.Position = _bungVector;
-                    DeletePositionsElement(cell);
-                    break;
-            }
-        } else {
-            cell.Position = _bungVector;
-            DeletePositionsElement(cell);
+    private void FillGridWithRandomObjects(int count) {
+        for (int i = 0; i < count; i++) {
+            GameObject tempObject = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+            FillGridWithObjects(tempObject, 1);
         }
-
     }
 
-    private void DeletePositionsElement(Cell cell) {
-        cell = null;
+    private void DeleteElementsAtDepth(Cell cell, int rowDepth, int columnDepth) {
+        if (rowDepth > 1) {
+            if (cell.Right != null)
+                DeleteElementsAtDepth(cell.Right, rowDepth - 1, columnDepth);
+            if (cell.Left != null)
+                DeleteElementsAtDepth(cell.Left, rowDepth - 1, columnDepth);
+        }
+        if (columnDepth > 1) {
+            if (cell.Top != null)
+                DeleteElementsAtDepth(cell.Top, rowDepth, columnDepth - 1);
+            if (cell.Down != null)
+                DeleteElementsAtDepth(cell.Down, rowDepth, columnDepth - 1);
+        }
+        _pos.Remove(cell);
     }
 
     private void SetGridParemeters(Bounds area, float objectSize) {
@@ -155,8 +117,7 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
                 float positionX = startGridPosition.x + i * maxObjectSize + maxObjectSize / 2;
                 float positionZ = startGridPosition.z + (_gridWidth - 1) * _offsetZ / 2 - j * _offsetZ;
                 Vector3 position = new Vector3(positionX, .7f, positionZ);
-                Cell cell = new Cell();
-                cell.Position = position;
+                Cell cell = new Cell(position);
                 _pos.Add(cell);
                 if (i - 1 > 0) {
                     int index = _pos.Count - 1;
@@ -173,7 +134,13 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     }
 
     private float FindMaxSizeSmallestObject() {
-        return Mathf.Min(FindMaxSide(coinPrefab), FindMaxSide(obstaclePrefab));
+        float maxSide = FindMaxSide(obstaclePrefabs[0]);
+        foreach(GameObject objectPrefab in obstaclePrefabs) {
+            float tempSide = FindMaxSide(objectPrefab);
+            maxSide = maxSide > tempSide ? tempSide : maxSide; 
+        }
+
+        return Mathf.Min(FindMaxSide(coinPrefab), maxSide);
     }
 
     private float FindMaxSide(GameObject objectPrefab) {
@@ -190,7 +157,8 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
         public Cell Right { get; set; }
         public Cell Left { get; set; }
 
-        public Cell() {
+        public Cell(Vector3 position) {
+            Position = position;
             Top = null;
             Down = null;
             Right = null;

@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 441102375}
   - component: {fileID: 441102374}
   - component: {fileID: 441102373}
+  - component: {fileID: 441102379}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -535,6 +536,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441102371}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &441102379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441102371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
+  motionTarget: {x: 0, y: 0, z: 0}
+  speed: 1
+  forceMultiplier: 50
+  _tilt: 1
 --- !u!1001 &443807543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1081,6 +1100,7 @@ GameObject:
   - component: {fileID: 969959256}
   - component: {fileID: 969959255}
   - component: {fileID: 969959254}
+  - component: {fileID: 969959260}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -1207,6 +1227,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969959252}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &969959260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969959252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
+  motionTarget: {x: 0, y: 0, z: 0}
+  speed: 1
+  forceMultiplier: 50
+  _tilt: 1
 --- !u!114 &972828940 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 972828940, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
@@ -1878,6 +1916,7 @@ GameObject:
   - component: {fileID: 1811246225}
   - component: {fileID: 1811246224}
   - component: {fileID: 1811246223}
+  - component: {fileID: 1811246229}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -2004,6 +2043,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811246221}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1811246229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811246221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
+  motionTarget: {x: 0, y: 0, z: 0}
+  speed: 1
+  forceMultiplier: 50
+  _tilt: 1
 --- !u!1001 &1819442379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2202,6 +2259,7 @@ GameObject:
   - component: {fileID: 1948599817}
   - component: {fileID: 1948599816}
   - component: {fileID: 1948599821}
+  - component: {fileID: 1948599822}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -2328,6 +2386,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1948599822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948599814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7bd1126468134098a26c007500022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushed: 0
+  motionStartPoint: {x: 0, y: 0, z: 0}
+  motionTarget: {x: 0, y: 0, z: 0}
+  speed: 1
+  forceMultiplier: 50
+  _tilt: 1
 --- !u!1001 &1953365245
 PrefabInstance:
   m_ObjectHideFlags: 0

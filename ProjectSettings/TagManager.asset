@@ -14,6 +14,7 @@ TagManager:
   - OpenLevelTutorial
   - Coin
   - Movement
+  - Obstacle
   layers:
   - Default
   - TransparentFX

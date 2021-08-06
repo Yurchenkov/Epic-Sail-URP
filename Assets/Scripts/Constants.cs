@@ -14,6 +14,11 @@ public class Constants {
     public const string LEVEL_TYPE_OPEN = "Open";
     public const string LEVEL_TYPE_LINEAR = "Linear";
 
+    public const string OBSTACLE_TYPE_STATIC = "Static";
+    public const string OBSTACLE_TYPE_FLOATABLE = "Floatable";
+    public const string OBSTACLE_TYPE_BREAKABLE = "Breakable";
+    public const string OBSTACLE_TYPE_MATCHABLE = "Matchable";
+
     public const string TUTORIAL_TYPE_MOVEMENT = "Movement";
 
     public const string LAYER_MASK_WATER = "Water";

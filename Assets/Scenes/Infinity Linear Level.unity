@@ -237,8 +237,90 @@ MonoBehaviour:
   _boat: {fileID: 240127970}
   _pieces:
   - {fileID: -3116357935048096161, guid: c829ccfdf82de904088ee322a26aa74e, type: 3}
-  _coinCount: 3
+  _coinCount: 8
   _obstacleCount: 5
+  _startCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.5
+      outSlope: 0.5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 5
+      inSlope: 0.5
+      outSlope: 0.5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _speed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 10
+      value: 10
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _obstacleCountOnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 10
+      value: 5
+      inSlope: -0.10638253
+      outSlope: -0.10638253
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.32149124
+    - serializedVersion: 3
+      time: 15
+      value: 10
+      inSlope: 0.021374382
+      outSlope: 0.021374382
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2213213
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 20
+      value: 5
+      inSlope: -0.003967718
+      outSlope: -0.003967718
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.27412874
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  _curvePeriod: 10
 --- !u!114 &1609713890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1165904780449564473, guid: 3e3a7d6a877ce884f8eca5692b420367, type: 3}
-  obstaclePrefab: {fileID: 1639647710033680457, guid: 4d5bfbf7528c52346bc8ca629331af7c, type: 3}
+  obstaclePrefabs:
+  - {fileID: 1639647710033680457, guid: 4d5bfbf7528c52346bc8ca629331af7c, type: 3}
   _coinCount: 3
   _obstacleCount: 0
   _gridWidth: 3

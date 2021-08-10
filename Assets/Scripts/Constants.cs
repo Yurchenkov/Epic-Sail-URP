@@ -3,6 +3,7 @@ public class Constants {
     public const string TAG_PLAYER = "Player";
     public const string TAG_GAME_MANAGER = "GameManager";
     public const string TAG_POINTER = "Pointer";
+    public const string TAG_OBSTACLE = "Obstacle";
     public const string TAG_COIN_COUNTER = "CoinCounter";
     public const string TAG_LEVEL_SWITCHER = "LevelSwitcher";
     public const string TAG_WELCOME_WINDOW = "WelcomeWindow";

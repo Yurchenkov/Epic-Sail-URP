@@ -266,7 +266,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1165904780449564473, guid: 3e3a7d6a877ce884f8eca5692b420367, type: 3}
-  obstaclePrefab: {fileID: 1639647710033680457, guid: 4d5bfbf7528c52346bc8ca629331af7c, type: 3}
+  obstaclePrefabs:
+  - {fileID: 1639647710033680457, guid: 4d5bfbf7528c52346bc8ca629331af7c, type: 3}
+  - {fileID: 7248362546121645961, guid: a85a6c7d0336ba64bba7cd2a91888df4, type: 3}
+  - {fileID: 6230528711972468106, guid: 3ab37b0d54b9fd649bf351ffa31e9ae3, type: 3}
+  - {fileID: 1215508544340592570, guid: 249d6dbe74bbfa14abdb997828ec6549, type: 3}
+  - {fileID: 5814115768453413705, guid: ef5e9a528dcf18d4fba46730b2190e6b, type: 3}
+  - {fileID: 1056737312466429552, guid: 066646e06a2c3ac4090814448fe9932c, type: 3}
   _coinCount: 3
   _obstacleCount: 0
   _gridWidth: 3

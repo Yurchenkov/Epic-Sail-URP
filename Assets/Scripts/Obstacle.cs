@@ -18,7 +18,7 @@ public class Obstacle : MonoBehaviour {
         Type3,
     };
 
-    public MatchTypes matchType;
+    public MatchTypes matchType; //TODO: make visible only if the Matchable type is selected
 
     private int _safetyMargin;
 

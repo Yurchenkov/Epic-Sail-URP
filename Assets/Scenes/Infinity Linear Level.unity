@@ -239,7 +239,7 @@ MonoBehaviour:
   - {fileID: -3116357935048096161, guid: c829ccfdf82de904088ee322a26aa74e, type: 3}
   _coinCount: 8
   _obstacleCount: 5
-  _startCurve:
+  _startCurveObstacle:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3

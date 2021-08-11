@@ -79,7 +79,7 @@ public class Pointer : MonoBehaviour {
     }
 
     private void SetPushableObjectParams() {
-        if (_isTouchEnded && _isPushSomething) {
+        if (_isTouchEnded && _isPushSomething && _pushedObject) {
             Pushable pushableComponent = _pushedObject.GetComponent<Pushable>();
             if (pushableComponent == null) {
                 _isPushSomething = false;

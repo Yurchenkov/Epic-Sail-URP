@@ -68,4 +68,8 @@ public class GroundCreator : MonoBehaviour {
         _curveStep++;
         _curveStep = _curveStep > _curvePeriod * 2 ? _curvePeriod : _curveStep;
     }
+
+    public int GetStep() {
+        return _curveStep;
+    }
 }

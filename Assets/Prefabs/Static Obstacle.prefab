@@ -125,4 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbd7c2a47e9b3e49b7f01913b789036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chanceToCreating:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.0005187988
+      outSlope: -0.0005187988
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   obstacleType: 0
+  matchType: 0

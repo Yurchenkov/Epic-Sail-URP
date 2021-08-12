@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
+    public AnimationCurve chanceToCreating;
+
     private LoseWindow _loseWindow;
+
     public enum ObstacleTypes {
         Static,
         Floatable,

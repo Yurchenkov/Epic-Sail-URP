@@ -19,6 +19,8 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     private Transform _transform;
     private List<Cell> _pos;
     private bool isFirstPiece = true;
+    private List<float> _obstacleChances;
+    private float _chancesSum;
 
     private void Awake() {
         if (instance == null)
@@ -37,6 +39,7 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
         if (!isFirstPiece) {
             _coinCount = coinCount;
             _obstacleCount = obstacleCount;
+            CreateChancesList(GroundCreator.instance.GetStep());
             CreateListPosition(waterArea);
             FillGridWithRandomObjects(_obstacleCount);
             FillGridWithObjects(coinPrefab, _coinCount);
@@ -70,8 +73,30 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
 
     private void FillGridWithRandomObjects(int count) {
         for (int i = 0; i < count; i++) {
-            GameObject tempObject = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-            FillGridWithObjects(tempObject, 1);
+            FillGridWithObjects(ChooseAnObstacle(), 1);
+        }
+    }
+
+    private GameObject ChooseAnObstacle() {
+        float value = Random.Range(0, _chancesSum);
+        float tempSum = 0;
+
+        for (int i = 0; i < _obstacleChances.Count; i++) {
+            tempSum += _obstacleChances[i];
+            if (value < tempSum) {
+                return obstaclePrefabs[i];
+            }
+        }
+        return obstaclePrefabs[0];
+    }
+
+    private void CreateChancesList(float curveStep) {
+        _obstacleChances = new List<float>();
+        _chancesSum = 0;
+        for (int i = 0; i < obstaclePrefabs.Length; i++) {
+            float chance = obstaclePrefabs[i].GetComponent<Obstacle>().chanceToCreating.Evaluate(curveStep);
+            _obstacleChances.Add(chance);
+            _chancesSum += chance;
         }
     }
 

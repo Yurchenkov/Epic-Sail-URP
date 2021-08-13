@@ -43,7 +43,7 @@ public class Pushable : MonoBehaviour {
     }
 
     private Vector3 GetForce() {
-        return (motionTarget - motionStartPoint) * forceMultiplier;
+        return (motionTarget - _transform.position) * forceMultiplier;
     }
 
     private float GetStep() {

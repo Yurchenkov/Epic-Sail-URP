@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour {
 
-    private Vector3 _startPoint;
     private Vector3 _endPoint;
     private LayerMask _layerMask;
     private TrailRenderer _trailRenderer;
@@ -12,7 +11,6 @@ public class Pointer : MonoBehaviour {
     private Camera _mainCamera;
     private Vector3 _inputPosition;
     private bool _isTouched;
-    private bool _isTouchStarted;
     private bool _isTouchEnded;
     private Transform _transform;
 
@@ -49,9 +47,7 @@ public class Pointer : MonoBehaviour {
         if (_isTouched) {
             Touch touch = Input.GetTouch(0);
             _inputPosition = touch.position;
-            _isTouchStarted = touch.phase == TouchPhase.Began;
             _isTouchEnded = touch.phase == TouchPhase.Ended;
-            _startPoint = _isTouchStarted ? _transform.position : _startPoint;
             _endPoint = _isTouchEnded ? _transform.position : _endPoint;
             return;
         }
@@ -59,10 +55,8 @@ public class Pointer : MonoBehaviour {
 #if UNITY_EDITOR
         _inputPosition = Input.mousePosition;
         _isTouched = Input.GetMouseButton(0);
-        _isTouchStarted = Input.GetMouseButtonDown(0);
         _isTouchEnded = Input.GetMouseButtonUp(0);
         _endPoint = _isTouchEnded ? _transform.position : _endPoint;
-        _startPoint = _isTouchStarted ? _transform.position : _startPoint;
 #endif
     }
 
@@ -88,7 +82,6 @@ public class Pointer : MonoBehaviour {
             }
 
             pushableComponent.isPushed = _isPushSomething;
-            pushableComponent.motionStartPoint = _startPoint;
             pushableComponent.motionTarget = _endPoint;
 
             _isPushSomething = false;

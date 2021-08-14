@@ -21,7 +21,9 @@ public class LoseWindow : MonoBehaviour {
     }
 
     public void PayToContinue() {
-        _obstacle.SetActive(false);
+        if (_obstacle != null)
+            _obstacle.SetActive(false);
+
         GameManager.totalCoinCounter -= _continuationFee;
         if (_continuationFee < _maximumFee) _continuationFee += _feeIncrement;
         else _continuationFee = _maximumFee;

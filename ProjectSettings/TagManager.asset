@@ -16,6 +16,10 @@ TagManager:
   - Movement
   - Obstacle
   - TutorialLevelCompletion
+  - StaticObstacleTutorial
+  - FloatableObstacleTutorial
+  - BreakableObstacleTutorial
+  - MatchableObstacleTutorial
   layers:
   - Default
   - TransparentFX

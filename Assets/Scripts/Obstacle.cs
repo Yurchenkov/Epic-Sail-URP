@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
+    public AnimationCurve chanceToCreating;
+    public int safetyMargin;
+
     private LoseWindow _loseWindow;
+
     public enum ObstacleTypes {
         Static,
         Floatable,
@@ -20,7 +24,7 @@ public class Obstacle : MonoBehaviour {
 
     public MatchTypes matchType; //TODO: make visible only if the Matchable type is selected
 
-    private int _safetyMargin;
+    
 
     private void Awake() {
         _loseWindow = FindObjectOfType<LoseWindow>();
@@ -34,7 +38,7 @@ public class Obstacle : MonoBehaviour {
     }
 
     private void SetSafetyMargin() {
-        _safetyMargin = Random.Range(3, 10);
+        safetyMargin = Random.Range(3, 10);
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -71,11 +75,10 @@ public class Obstacle : MonoBehaviour {
     }
 
     private void Damage() {
-        if (_safetyMargin.Equals(0)) {
+        safetyMargin--;
+        if (safetyMargin.Equals(0)) {
             Destroy(gameObject);
             return;
         }
-
-        _safetyMargin--;
     }
 }

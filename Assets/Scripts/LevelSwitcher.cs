@@ -10,7 +10,7 @@ public class LevelSwitcher : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag(Constants.TAG_PLAYER))
-            LoadNextLevel(SceneManager.GetActiveScene().buildIndex + 1);       
+            LoadNextLevel(Constants.BUILD_INDEX_INFINITE_LEVEL);       
     }
 
     public void LoadNextLevel(int levelIndex) {

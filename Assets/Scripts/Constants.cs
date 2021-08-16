@@ -9,8 +9,12 @@ public class Constants {
     public const string TAG_WELCOME_WINDOW = "WelcomeWindow";
     public const string TAG_MOVEMENT_TUTORIAL = "MovementTutorial";
     public const string TAG_COIN_TUTORIAL = "CoinTutorial";
-    public const string TAG_OBSTACLE_TUTORIAL = "ObstacleTutorial";
+    public const string TAG_STATIC_OBSTACLE_TUTORIAL = "StaticObstacleTutorial";
+    public const string TAG_FLOATABLE_OBSTACLE_TUTORIAL = "FloatableObstacleTutorial";
+    public const string TAG_BREAKABLE_OBSTACLE_TUTORIAL = "BreakableObstacleTutorial";
+    public const string TAG_MATCHABLE_OBSTACLE_TUTORIAL = "MatchableObstacleTutorial";
     public const string TAG_OPEN_LEVEL_TUTORIAL = "OpenLevelTutorial";
+    public const string TAG_TUTORIAL_LEVEL_COMPLETION = "TutorialLevelCompletion";
 
     public const string LEVEL_TYPE_OPEN = "Open";
     public const string LEVEL_TYPE_LINEAR = "Linear";
@@ -21,6 +25,7 @@ public class Constants {
     public const string OBSTACLE_TYPE_MATCHABLE = "Matchable";
 
     public const string TUTORIAL_TYPE_MOVEMENT = "Movement";
+    public const string TUTORIAL_LEVEL = "TutorialLevel";
 
     public const string LAYER_MASK_WATER = "Water";
 

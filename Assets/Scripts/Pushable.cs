@@ -3,7 +3,6 @@ using UnityEngine;
 public class Pushable : MonoBehaviour {
 
     public bool isPushed = false;
-    public Vector3 motionStartPoint;
     public Vector3 motionTarget;
     public float speed = 1f;
     public float forceMultiplier = 50f;

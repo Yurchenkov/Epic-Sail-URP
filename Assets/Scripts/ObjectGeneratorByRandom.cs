@@ -7,10 +7,10 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
 
     public GameObject coinPrefab;
     public GameObject[] obstaclePrefabs;
-    
+
 
     [SerializeField] private int _coinCount;
-    [SerializeField] private int _obstacleCount;
+    [SerializeField] private int _obstaclesCount;
     [SerializeField] private int _gridWidth = 0;
 
     private int _gridLength = 0;
@@ -18,7 +18,9 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     private float _offsetX;
     private Transform _transform;
     private List<Cell> _pos;
-    private bool isFirstPiece = true;
+    private bool _isFirstPiece = true;
+    private List<float> _obstacleChances;
+    private float _chancesSum;
 
     private void Awake() {
         if (instance == null)
@@ -34,24 +36,25 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     }
 
     public void FillWaterArea(Transform waterArea, int coinCount, int obstacleCount) {
-        if (!isFirstPiece) {
+        if (!_isFirstPiece) {
             _coinCount = coinCount;
-            _obstacleCount = obstacleCount;
+            _obstaclesCount = obstacleCount;
+            CreateChancesList(GroundCreator.instance.GetStep());
             CreateListPosition(waterArea);
-            FillGridWithRandomObjects(_obstacleCount);
+            FillGridWithRandomObjects(_obstaclesCount);
             FillGridWithObjects(coinPrefab, _coinCount);
         } else {
-            isFirstPiece = false;
+            _isFirstPiece = false;
         }
     }
 
-    private void FillGridWithObjects(GameObject objectPrefab, int count) {
-        if (count > 0) {
+    private void FillGridWithObjects(GameObject objectPrefab, int objectsCount = 1) {
+        if (objectsCount > 0) {
             int rowDepth = Mathf.CeilToInt(FindMaxSide(objectPrefab) / _offsetZ);
             int columnDepth = Mathf.CeilToInt(FindMaxSide(objectPrefab) / _offsetX);
             int placedObject = 0;
 
-            while (placedObject < count && _pos.Count > 0) {
+            while (placedObject < objectsCount && _pos.Count > 0) {
                 placedObject++;
                 int index = Random.Range(0, _pos.Count);
                 if (_pos[index] != null) {
@@ -68,10 +71,31 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
         }
     }
 
-    private void FillGridWithRandomObjects(int count) {
-        for (int i = 0; i < count; i++) {
-            GameObject tempObject = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-            FillGridWithObjects(tempObject, 1);
+    private void FillGridWithRandomObjects(int objectsCount) {
+        for (int currentObjectsCount = 0; currentObjectsCount < objectsCount; currentObjectsCount++)
+            FillGridWithObjects(ChooseAnObstacle());
+    }
+
+    private GameObject ChooseAnObstacle() {
+        float value = Random.Range(0, _chancesSum);
+        float tempSum = 0;
+
+        for (int currentChance = 0; currentChance < _obstacleChances.Count; currentChance++) {
+            tempSum += _obstacleChances[currentChance];
+            if (value < tempSum)
+                return obstaclePrefabs[currentChance];
+        }
+
+        return obstaclePrefabs[0];
+    }
+
+    private void CreateChancesList(float curveStep) {
+        _obstacleChances = new List<float>();
+        _chancesSum = 0;
+        for (int currentPrefabNumber = 0; currentPrefabNumber < obstaclePrefabs.Length; currentPrefabNumber++) {
+            float chance = obstaclePrefabs[currentPrefabNumber].GetComponent<Obstacle>().chanceToCreating.Evaluate(curveStep);
+            _obstacleChances.Add(chance);
+            _chancesSum += chance;
         }
     }
 
@@ -135,9 +159,9 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
 
     private float FindMaxSizeSmallestObject() {
         float maxSide = FindMaxSide(obstaclePrefabs[0]);
-        foreach(GameObject objectPrefab in obstaclePrefabs) {
+        foreach (GameObject objectPrefab in obstaclePrefabs) {
             float tempSide = FindMaxSide(objectPrefab);
-            maxSide = maxSide > tempSide ? tempSide : maxSide; 
+            maxSide = maxSide > tempSide ? tempSide : maxSide;
         }
 
         return Mathf.Min(FindMaxSide(coinPrefab), maxSide);

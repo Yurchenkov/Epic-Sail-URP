@@ -55,7 +55,7 @@ public class GroundCreator : MonoBehaviour {
         ObjectGeneratorByRandom.instance.FillWaterArea(newPiece.waterArea, _coinCount, _obstacleCount);
         //LinearObjectsGenerator.instance.FillWaterArea(newPiece.waterArea);
         _createdPieces.Add(newPiece);
-        _levelController.speed = _defaultSpeed + _speed.Evaluate(_curveStep) / 2;
+        _levelController.speed = _defaultSpeed + _speed.Evaluate(_curveStep);
         CalculateStep();
     }
 
@@ -67,5 +67,9 @@ public class GroundCreator : MonoBehaviour {
     private void CalculateStep() {
         _curveStep++;
         _curveStep = _curveStep > _curvePeriod * 2 ? _curvePeriod : _curveStep;
+    }
+
+    public int GetStep() {
+        return _curveStep;
     }
 }

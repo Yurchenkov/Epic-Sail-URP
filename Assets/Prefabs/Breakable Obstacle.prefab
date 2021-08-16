@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 0
   textSize: 113
-  textFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  textFont: {fileID: 12800000, guid: 0e68ef48ffed9414a8c31d928564419f, type: 3}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   textHeight: 2.8
   showShadow: 0

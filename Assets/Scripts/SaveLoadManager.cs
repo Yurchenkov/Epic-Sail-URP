@@ -19,10 +19,10 @@ public static class SaveLoadManager
 		file.Close();
 	}
 
-	public static object Load<T>(object loadedObject) {
-		if (File.Exists(Application.persistentDataPath + "/" + loadedObject.GetType().ToString() + ".sd")) {
+	public static object Load<T>(string ojectType) {
+		if (File.Exists(Application.persistentDataPath + "/" + ojectType + ".sd")) {
 			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/" + loadedObject.GetType().ToString() + ".sd", FileMode.Open);
+			FileStream file = File.Open(Application.persistentDataPath + "/" + ojectType + ".sd", FileMode.Open);
 			T returnedObject = (T)bf.Deserialize(file);
 			file.Close();
 			return returnedObject;

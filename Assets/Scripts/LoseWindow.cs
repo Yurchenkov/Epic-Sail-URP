@@ -25,9 +25,13 @@ public class LoseWindow : MonoBehaviour {
         if (_obstacle != null)
             _obstacle.SetActive(false);
 
-        GameManager.playerData.ReduceTotalMoney((int)_continuationFee); //.totalCoinCounter -= _continuationFee;
-        if (_continuationFee < _maximumFee) _continuationFee += _feeIncrement;
-        else _continuationFee = _maximumFee;
+        GameManager.playerData.ReduceTotalMoney(_continuationFee);
+
+        if (_continuationFee < _maximumFee) 
+            _continuationFee += _feeIncrement;
+        else 
+            _continuationFee = _maximumFee;
+
         _paymentButtonText.text = _continuationFee.ToString();
         GameManager.instance.Resume();
     }

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public struct Player
-{
+public struct Player {
+
     public int id;
     public string name;
     public int levelMoney;
@@ -37,13 +37,14 @@ public struct Player
     public bool IsTutorialComplete(string tutorialType) {
         if (_completedTutorials != null)
             return _completedTutorials.Contains(tutorialType);
-        return false;
 
+        return false;
     }
 
     public bool IsPopupViewed(string popupType) {
         if(_viewedPopups != null)
             return _viewedPopups.Contains(popupType);
+
         return false;
     }
 

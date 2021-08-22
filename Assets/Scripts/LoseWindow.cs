@@ -6,14 +6,15 @@ public class LoseWindow : MonoBehaviour {
     public GameObject loseWindowCanvas;
     public Button paymentButton;
 
-    [SerializeField] private float _initialFee;
-    [SerializeField] private float _feeIncrement;
-    [SerializeField] private float _maximumFee;
+    [SerializeField] private int _initialFee;
+    [SerializeField] private int _feeIncrement;
+    [SerializeField] private int _maximumFee;
+    [SerializeField] private Text _totalMoneyAmount;
 
-    private float _continuationFee;
+    private int _continuationFee;
     private GameObject _obstacle;
     private Text _paymentButtonText;
-
+   
     private void Awake() {
         _paymentButtonText = paymentButton.GetComponentInChildren<Text>();
         _continuationFee = _initialFee;
@@ -24,20 +25,25 @@ public class LoseWindow : MonoBehaviour {
         if (_obstacle != null)
             _obstacle.SetActive(false);
 
-        GameManager.totalCoinCounter -= _continuationFee;
-        if (_continuationFee < _maximumFee) _continuationFee += _feeIncrement;
-        else _continuationFee = _maximumFee;
+        GameManager.playerData.ReduceTotalMoney(_continuationFee);
+
+        if (_continuationFee < _maximumFee) 
+            _continuationFee += _feeIncrement;
+        else 
+            _continuationFee = _maximumFee;
+
         _paymentButtonText.text = _continuationFee.ToString();
         GameManager.instance.Resume();
     }
 
     public bool IsPayable() {
-        return GameManager.totalCoinCounter > _continuationFee;
+        return GameManager.playerData.totalMoney > _continuationFee;
     }
 
     public void OpenLoseWindow(GameObject obstacle) {
         _obstacle = obstacle;
         GameManager.instance.Pause();
+        _totalMoneyAmount.text = "Всего денег: " + GameManager.playerData.totalMoney;
         loseWindowCanvas.SetActive(true);
         ShowPaymentButton();
     }

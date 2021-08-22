@@ -13,12 +13,12 @@ public class TutorialController : MonoBehaviour {
 
     public void CloseTutorial() {
         tutorialCanvas.SetActive(false);
-        GameManager.CompleteTutorial(_tutorialType);
+        GameManager.playerData.CompleteTutorial(_tutorialType);
         ResumeGame();
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.IsTutorialComplete(_tutorialType))
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.playerData.IsTutorialComplete(_tutorialType))
             ShowTutorial();
     }
 

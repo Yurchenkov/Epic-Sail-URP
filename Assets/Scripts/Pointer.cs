@@ -24,9 +24,9 @@ public class Pointer : MonoBehaviour {
 
     private void Update() {
 #if UNITY_EDITOR
-        GameManager.CompleteTutorial(Constants.TUTORIAL_TYPE_MOVEMENT); // TODO: is used in development mode. Remove before release
+        GameManager.playerData.CompleteTutorial(Constants.TUTORIAL_TYPE_MOVEMENT); // TODO: is used in development mode. Remove before release
 #endif
-        if (GameManager.instance.isGamePaused || !GameManager.IsTutorialComplete(Constants.TUTORIAL_TYPE_MOVEMENT))
+        if (GameManager.instance.isGamePaused || !GameManager.playerData.IsTutorialComplete(Constants.TUTORIAL_TYPE_MOVEMENT))
             return;
 
         CalculateInput();

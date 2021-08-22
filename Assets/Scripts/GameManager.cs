@@ -6,21 +6,17 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
-    public static float totalCoinCounter = 0f;
-    public static List<string> completedTutorials = new List<string>();
-    public static List<string> viewedPopups = new List<string>();
-
     public bool isGamePaused = false;
-    public float localCoinCounter = 0f;
     public string currentLevelType;
-
     public ResumeTimer _timer;
+    public  static Player playerData = new Player(1);
 
     private void Awake() {
         if (instance == null)
             instance = this;
         else if (instance == this)
             Destroy(gameObject);
+        playerData = SaveLoadManager.Load<Player>("Player") != null ? (Player)SaveLoadManager.Load<Player>("Player") : playerData;
     }
 
     private void OnEnable() {
@@ -43,42 +39,21 @@ public class GameManager : MonoBehaviour {
     public void Restart() {
         Time.timeScale = 1f;
         SetPauseGameState(false);
+        playerData.ResetLevelMoney();
+        SaveLoadManager.Save(playerData);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitToMainMenu() {
         Time.timeScale = 1f;
         SetPauseGameState(false);
+        playerData.ResetLevelMoney();
+        SaveLoadManager.Save(playerData);
         SceneManager.LoadScene(Constants.BUILD_INDEX_MAIN_MENU);
     }
 
     private void SetPauseGameState(bool isPaused) {
         isGamePaused = isPaused;
-    }
-
-    public void IncreaseLocalCoinCounter() {
-        localCoinCounter++;
-        IncreaseTotalCoinCounter();
-    }
-
-    public static void IncreaseTotalCoinCounter() {
-        totalCoinCounter++;
-    }
-
-    public static bool IsTutorialComplete(string tutorialType) {
-        return completedTutorials.Contains(tutorialType);
-    }
-
-    public static bool IsPopupViewed(string popupType) {
-        return viewedPopups.Contains(popupType);
-    }
-
-    public static void CompleteTutorial(string tutorialType) {
-        completedTutorials.Add(tutorialType);
-    }
-
-    public static void SetPopupAsViewed(string popupType) {
-        viewedPopups.Add(popupType);
     }
 
     public void ResumeAfterTimer() {

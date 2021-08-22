@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject infiniteLevelButton;
 
     public void StartGame() {
-        if (GameManager.completedTutorials.Contains(Constants.TUTORIAL_LEVEL)) { 
+        if (GameManager.playerData.IsTutorialComplete(Constants.TUTORIAL_LEVEL)) { 
             StartInfiniteLevel();
             return;
         }

@@ -26,7 +26,7 @@ public class CoinController : MonoBehaviour {
     }
 
     private void IncreaseCoinCounter() {
-        GameManager.instance.IncreaseLocalCoinCounter();
+        GameManager.playerData.Addmoney();
     }
 
     private void OnBecameInvisible() {

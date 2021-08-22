@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public bool isGamePaused = false;
     public string currentLevelType;
     public ResumeTimer _timer;
-    public  static Player playerData = new Player(1);
+    public static Player playerData = new Player(1);
 
     private void Awake() {
         if (instance == null)

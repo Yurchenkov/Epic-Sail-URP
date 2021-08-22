@@ -6,13 +6,12 @@ public class LoseWindow : MonoBehaviour {
     public GameObject loseWindowCanvas;
     public Button paymentButton;
 
-    [SerializeField] private float _initialFee;
-    [SerializeField] private float _feeIncrement;
-    [SerializeField] private float _maximumFee;
-    [SerializeField] private Text _allMoney;
+    [SerializeField] private int _initialFee;
+    [SerializeField] private int _feeIncrement;
+    [SerializeField] private int _maximumFee;
+    [SerializeField] private Text _totalMoneyAmount;
 
-
-    private float _continuationFee;
+    private int _continuationFee;
     private GameObject _obstacle;
     private Text _paymentButtonText;
    
@@ -26,7 +25,7 @@ public class LoseWindow : MonoBehaviour {
         if (_obstacle != null)
             _obstacle.SetActive(false);
 
-        GameManager.playerData.DeductMoney((int)_continuationFee); //.totalCoinCounter -= _continuationFee;
+        GameManager.playerData.ReduceTotalMoney((int)_continuationFee); //.totalCoinCounter -= _continuationFee;
         if (_continuationFee < _maximumFee) _continuationFee += _feeIncrement;
         else _continuationFee = _maximumFee;
         _paymentButtonText.text = _continuationFee.ToString();
@@ -34,13 +33,13 @@ public class LoseWindow : MonoBehaviour {
     }
 
     public bool IsPayable() {
-        return GameManager.playerData.allMoney > _continuationFee;
+        return GameManager.playerData.totalMoney > _continuationFee;
     }
 
     public void OpenLoseWindow(GameObject obstacle) {
         _obstacle = obstacle;
         GameManager.instance.Pause();
-        _allMoney.text = "Всего денег: " + GameManager.playerData.allMoney;
+        _totalMoneyAmount.text = "Всего денег: " + GameManager.playerData.totalMoney;
         loseWindowCanvas.SetActive(true);
         ShowPaymentButton();
     }

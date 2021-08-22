@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 277171845}
   - component: {fileID: 277171844}
   m_Layer: 5
-  m_Name: AllMoneyText
+  m_Name: Total Money Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.227, y: 220.29904}
+  m_AnchoredPosition: {x: 0, y: 220.29904}
   m_SizeDelta: {x: 721.2874, y: 131.1288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277171844
@@ -272,7 +272,7 @@ MonoBehaviour:
   _initialFee: 50
   _feeIncrement: 100
   _maximumFee: 5000
-  _allMoney: {fileID: 277171844}
+  _totalMoneyAmount: {fileID: 277171844}
 --- !u!1 &1609713887
 GameObject:
   m_ObjectHideFlags: 0

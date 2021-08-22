@@ -6,7 +6,7 @@ public struct Player
     public int id;
     public string name;
     public int levelMoney;
-    public int allMoney;
+    public int totalMoney;
 
     private List<string> _completedTutorials;
     private List<string> _viewedPopups;
@@ -15,22 +15,22 @@ public struct Player
         id = tempId;
         name = "Player";
         levelMoney = 0;
-        allMoney = 0;
+        totalMoney = 0;
         _completedTutorials = new List<string>();
         _viewedPopups = new List<string>();
     }
 
-    public void Addmoney(int moneyCount = 1) {
+    public void AddMoney(int moneyCount = 1) {
         levelMoney += moneyCount;
-        allMoney += moneyCount;
+        totalMoney += moneyCount;
     }
 
     public void ResetLevelMoney() {
         levelMoney = 0;
     }
 
-    public void DeductMoney(int coinCount = 1) {
-        allMoney = allMoney - coinCount < 0 ? 0 : allMoney - coinCount;
+    public void ReduceTotalMoney(int coinCount = 1) {
+        totalMoney = totalMoney - coinCount < 0 ? 0 : totalMoney - coinCount;
         levelMoney = levelMoney - coinCount < 0 ? 0 : levelMoney - coinCount;
     }
 

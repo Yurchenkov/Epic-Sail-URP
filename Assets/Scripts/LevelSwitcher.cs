@@ -10,7 +10,7 @@ public class LevelSwitcher : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag(Constants.TAG_PLAYER))
-            LoadNextLevel(Constants.BUILD_INDEX_INFINITE_LEVEL);       
+            LoadNextLevel(Constants.BUILD_INDEX_INFINITE_LEVEL);
     }
 
     public void LoadNextLevel(int levelIndex) {
@@ -21,7 +21,8 @@ public class LevelSwitcher : MonoBehaviour {
         transition.SetTrigger(Constants.ANIMATION_TRIGGER_CROSSFADE);
 
         yield return new WaitForSeconds(_transitionTime);
-        GameManager.playerData.ResetLevelMoney();
+        GameManager.instance.playerData.ResetLevelMoney();
+        SaveLoadManager.Save(GameManager.instance.playerData);
         SceneManager.LoadScene(levelIndex);
     }
 }

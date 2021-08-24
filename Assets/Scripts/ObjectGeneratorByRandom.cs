@@ -8,7 +8,6 @@ public class ObjectGeneratorByRandom : MonoBehaviour {
     public GameObject coinPrefab;
     public GameObject[] obstaclePrefabs;
 
-
     [SerializeField] private int _coinCount;
     [SerializeField] private int _obstaclesCount;
     [SerializeField] private int _gridWidth = 0;

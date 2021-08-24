@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public bool isGamePaused = false;
     public string currentLevelType;
     public ResumeTimer _timer;
-    public static Player playerData = new Player(1);
+    public Player playerData = new Player(1);
 
     private void Awake() {
         if (instance == null)
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
         SetPauseGameState(true);
     }
 
-    public void Resume() { 
+    public void Resume() {
         _timer.StartTimer();
     }
 
@@ -60,5 +60,5 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1f;
         SetPauseGameState(false);
     }
-    
+
 }

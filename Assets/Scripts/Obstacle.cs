@@ -24,8 +24,6 @@ public class Obstacle : MonoBehaviour {
 
     public MatchTypes matchType; //TODO: make visible only if the Matchable type is selected
 
-    
-
     private void Awake() {
         _loseWindow = FindObjectOfType<LoseWindow>();
 

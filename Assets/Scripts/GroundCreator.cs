@@ -13,7 +13,7 @@ public class GroundCreator : MonoBehaviour {
     [SerializeField] private AnimationCurve _speed;
     [SerializeField] private AnimationCurve _obstacleCountOnCurve;
     [SerializeField] private int _curvePeriod = 10;
- 
+
     private List<GroundPiece> _createdPieces = new List<GroundPiece>();
     private Transform _transform;
     private int _curveStep = 0;

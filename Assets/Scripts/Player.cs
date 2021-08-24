@@ -37,24 +37,22 @@ public struct Player {
     public bool IsTutorialComplete(string tutorialType) {
         if (_completedTutorials != null)
             return _completedTutorials.Contains(tutorialType);
-
         return false;
     }
 
     public bool IsPopupViewed(string popupType) {
-        if(_viewedPopups != null)
+        if (_viewedPopups != null)
             return _viewedPopups.Contains(popupType);
-
         return false;
     }
 
     public void CompleteTutorial(string tutorialType) {
-        if(!_completedTutorials.Contains(tutorialType))
+        if (!_completedTutorials.Contains(tutorialType))
             _completedTutorials.Add(tutorialType);
     }
 
     public void SetPopupAsViewed(string popupType) {
-        if(!_viewedPopups.Contains(popupType))
+        if (!_viewedPopups.Contains(popupType))
             _viewedPopups.Add(popupType);
     }
 }

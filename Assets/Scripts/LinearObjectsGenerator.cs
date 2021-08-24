@@ -49,9 +49,9 @@ public class LinearObjectsGenerator : MonoBehaviour {
         //int lastLine = 0;
         //int offsetPerLine = 0;
         lengthAllTrail = 0;
-        
 
-        while(lengthAllTrail < pieceLength) {
+
+        while (lengthAllTrail < pieceLength) {
             bool placedObstacleInEnd = Random.Range(0, 2) > 0;
             bool placedObstacleInOtherLine = Random.Range(0, 2) > 0;
             int trailLenght = _maxCoinPerTrail - Random.Range(0, 3);
@@ -69,22 +69,22 @@ public class LinearObjectsGenerator : MonoBehaviour {
                 CreateObject(position, coinPrefab);
                 if (j == trailLenght - 1) {
                     if (placedObstacleInOtherLine) {
-                        float minStartPosX = startLinePosition.x - trailLenght * _coinSize + _obstacleSize /2;
-                        float maxStartPosX = startLinePosition.x - _obstacleSize /2;
-                        float leftSide = lineNumber * _offsetZ - _obstacleSize/2;
-                        float rightSide = (_gridWidth - lineNumber) * _offsetZ - _obstacleSize/2;
+                        float minStartPosX = startLinePosition.x - trailLenght * _coinSize + _obstacleSize / 2;
+                        float maxStartPosX = startLinePosition.x - _obstacleSize / 2;
+                        float leftSide = lineNumber * _offsetZ - _obstacleSize / 2;
+                        float rightSide = (_gridWidth - lineNumber) * _offsetZ - _obstacleSize / 2;
 
-                        if (minStartPosX < maxStartPosX && (leftSide > _obstacleSize || rightSide >_obstacleSize)) {
+                        if (minStartPosX < maxStartPosX && (leftSide > _obstacleSize || rightSide > _obstacleSize)) {
                             float positionX = Random.Range(minStartPosX, maxStartPosX);
                             int leftPossabilityCount = (int)(leftSide / _obstacleSize);
                             int rightPossabilityCount = (int)(rightSide / _obstacleSize);
- 
+
                             if (leftPossabilityCount > 0 && rightPossabilityCount > 0) {
                                 switch (Random.Range(1, 3)) {
                                     case 1:
                                         int choise = Random.Range(0, 2);
                                         if (choise > 0)
-                                            PlacedObstacleInRange(positionX, position.z + leftSide - _obstacleSize/2, position.z + _obstacleSize);
+                                            PlacedObstacleInRange(positionX, position.z + leftSide - _obstacleSize / 2, position.z + _obstacleSize);
                                         else
                                             PlacedObstacleInRange(positionX, position.z - _obstacleSize, position.z - rightSide + _obstacleSize / 2);
                                         break;
@@ -93,7 +93,7 @@ public class LinearObjectsGenerator : MonoBehaviour {
                                         PlacedObstacleInRange(positionX, position.z - _obstacleSize, position.z - rightSide + _obstacleSize / 2);
                                         break;
                                 }
-                            }else if(leftPossabilityCount > 0) {
+                            } else if (leftPossabilityCount > 0) {
                                 PlacedObstacleInRange(positionX, position.z + leftSide - _obstacleSize / 2, position.z + _obstacleSize);
                             } else {
                                 PlacedObstacleInRange(positionX, position.z - _obstacleSize, position.z - rightSide + _obstacleSize / 2);
@@ -125,7 +125,7 @@ public class LinearObjectsGenerator : MonoBehaviour {
 
     private void SetPlacedParemeters(Bounds area, float objectSize) {
         pieceLength = area.size.x;
-        int x = (int)((area.size.x / (objectSize))/2);
+        int x = (int)((area.size.x / (objectSize)) / 2);
         int z = (int)((area.size.z - .3f * area.size.z) / objectSize);
 
         if (_gridWidth <= 0 || _gridWidth >= z) {
@@ -139,7 +139,7 @@ public class LinearObjectsGenerator : MonoBehaviour {
     private float FindMaxSizeSmallestObject() {
         _coinSize = FindMaxSide(coinPrefab);
         _obstacleSize = FindMaxSide(obstaclePrefab);
-        return Mathf.Min(_coinSize,_obstacleSize);
+        return Mathf.Min(_coinSize, _obstacleSize);
     }
 
     private float FindMaxSide(GameObject objectPrefab) {

@@ -14,7 +14,7 @@ public class CoinController : MonoBehaviour {
     }
 
     private void Rotate() {
-        Quaternion rotation = Quaternion.Euler(0,Time.time * _speed, 0);
+        Quaternion rotation = Quaternion.Euler(0, Time.time * _speed, 0);
         _transform.rotation = rotation;
     }
 
@@ -26,11 +26,11 @@ public class CoinController : MonoBehaviour {
     }
 
     private void IncreaseCoinCounter() {
-         GameManager.instance.playerData.AddMoney();
+        GameManager.instance.playerData.AddMoney();
     }
 
     private void OnBecameInvisible() {
         if (!GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_OPEN))
-            Destroy(gameObject);        
+            Destroy(gameObject);
     }
 }

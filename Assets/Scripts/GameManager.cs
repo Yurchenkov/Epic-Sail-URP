@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
         SetPauseGameState(true);
     }
 
-    public void Resume() { 
+    public void Resume() {
         _timer.StartTimer();
     }
 
@@ -60,5 +60,5 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1f;
         SetPauseGameState(false);
     }
-    
+
 }

@@ -25,7 +25,7 @@ public class LoseWindow : MonoBehaviour {
         if (_obstacle != null)
             _obstacle.SetActive(false);
 
-        GameManager.playerData.ReduceTotalMoney(_continuationFee);
+         GameManager.instance.playerData.ReduceTotalMoney(_continuationFee);
 
         if (_continuationFee < _maximumFee) 
             _continuationFee += _feeIncrement;
@@ -37,13 +37,13 @@ public class LoseWindow : MonoBehaviour {
     }
 
     public bool IsPayable() {
-        return GameManager.playerData.totalMoney > _continuationFee;
+        return  GameManager.instance.playerData.totalMoney > _continuationFee;
     }
 
     public void OpenLoseWindow(GameObject obstacle) {
         _obstacle = obstacle;
         GameManager.instance.Pause();
-        _totalMoneyAmount.text = "Всего денег: " + GameManager.playerData.totalMoney;
+        _totalMoneyAmount.text = "Всего денег: " +  GameManager.instance.playerData.totalMoney;
         loseWindowCanvas.SetActive(true);
         ShowPaymentButton();
     }

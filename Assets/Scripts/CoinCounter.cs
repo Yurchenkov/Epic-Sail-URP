@@ -14,6 +14,6 @@ public class CoinCounter : MonoBehaviour {
     }
 
     private void DisplayCoinCount() {
-        _coinCounterText.text = GameManager.playerData.levelMoney.ToString();
+        _coinCounterText.text = GameManager.instance.playerData.levelMoney.ToString() != null ? GameManager.instance.playerData.levelMoney.ToString() : "";
     }
 }

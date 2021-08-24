@@ -49,10 +49,12 @@ public struct Player {
     }
 
     public void CompleteTutorial(string tutorialType) {
-        _completedTutorials.Add(tutorialType);
+        if(!_completedTutorials.Contains(tutorialType))
+            _completedTutorials.Add(tutorialType);
     }
 
     public void SetPopupAsViewed(string popupType) {
-        _viewedPopups.Add(popupType);
+        if(!_viewedPopups.Contains(popupType))
+            _viewedPopups.Add(popupType);
     }
 }

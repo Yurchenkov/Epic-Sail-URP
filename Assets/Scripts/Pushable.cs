@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Pushable : MonoBehaviour {
@@ -11,10 +12,15 @@ public class Pushable : MonoBehaviour {
 
     private Transform _transform;
     private Rigidbody _rigidbody;
+    private float raycastDistance = 5f;
+    private float minBorderZ = 0;
+    private float maxBorderZ = 0;
 
     private void Awake() {
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
+        if (CompareTag(Constants.TAG_PLAYER))
+            StartCoroutine(CheckWaterArea());
     }
 
     private void Update() {
@@ -30,10 +36,13 @@ public class Pushable : MonoBehaviour {
     private void Move() {
         if (!CompareTag(Constants.TAG_PLAYER))
             MoveByForce();
-
-        float step = GetStep();
-        motionTarget.y = _transform.position.y;
-        _transform.position = Vector3.MoveTowards(_transform.position, motionTarget, step);
+        else {
+            float step = GetStep();
+            motionTarget.y = _transform.position.y;
+            Vector3 moveTowards = Vector3.MoveTowards(_transform.position, motionTarget, step);
+            moveTowards.z = Mathf.Clamp(moveTowards.z, minBorderZ, maxBorderZ);
+            _transform.position = moveTowards;
+        }
     }
 
     private void MoveByForce() {
@@ -76,5 +85,24 @@ public class Pushable : MonoBehaviour {
     private void SetLinearLevelRotation() {
         Vector3 direction = GetDirection();
         _transform.rotation = Quaternion.Euler(direction.z, 0, -direction.x);
+    }
+
+    private IEnumerator CheckWaterArea() {
+        while (true) {
+            Transform waterArea;
+            RaycastHit[] downPieces;
+            downPieces = Physics.RaycastAll(_transform.position, Vector3.down, raycastDistance);
+            foreach (RaycastHit hit in downPieces) {
+                GroundPiece groundChecking = hit.transform.gameObject.GetComponent<GroundPiece>();
+                if (groundChecking != null) {
+                    waterArea = groundChecking.waterArea;
+                    Bounds boundsArea = waterArea.GetComponent<Renderer>().bounds;
+                    minBorderZ = (boundsArea.center.z - boundsArea.extents.z) * 0.5f;
+                    maxBorderZ = (boundsArea.center.z + boundsArea.extents.z) * 0.5f;
+                    break;
+                }
+            }
+            yield return new WaitForSeconds(.5f);
+        }
     }
 }

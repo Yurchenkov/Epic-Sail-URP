@@ -4,9 +4,11 @@ public class CoinController : MonoBehaviour {
 
     private float _speed = 250f;
     private Transform _transform;
+    private CoinCounter _coinCounter;
 
     private void Awake() {
         _transform = transform;
+        _coinCounter = GameObject.FindGameObjectWithTag(Constants.TAG_COIN_COUNTER).GetComponent<CoinCounter>(); ;
     }
 
     private void Update() {
@@ -20,13 +22,9 @@ public class CoinController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag(Constants.TAG_PLAYER)) {
-            IncreaseCoinCounter();
+            _coinCounter.IncreaseCoinCounter();
             Destroy(gameObject);
         }
-    }
-
-    private void IncreaseCoinCounter() {
-        GameManager.instance.playerData.AddMoney();
     }
 
     private void OnBecameInvisible() {

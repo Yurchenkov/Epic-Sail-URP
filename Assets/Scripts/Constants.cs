@@ -5,6 +5,7 @@ public class Constants {
     public const string TAG_POINTER = "Pointer";
     public const string TAG_OBSTACLE = "Obstacle";
     public const string TAG_COIN_COUNTER = "CoinCounter";
+    public const string TAG_COIN_COUNTER_TEXT = "CoinCounterText";
     public const string TAG_LEVEL_SWITCHER = "LevelSwitcher";
     public const string TAG_WELCOME_WINDOW = "WelcomeWindow";
     public const string TAG_MOVEMENT_TUTORIAL = "MovementTutorial";

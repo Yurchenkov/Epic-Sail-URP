@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 3333778009155905746}
   m_Layer: 5
   m_Name: Coin Counter
-  m_TagString: Untagged
+  m_TagString: CoinCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3059,7 +3059,7 @@ GameObject:
   - component: {fileID: 3333778010530840072}
   m_Layer: 5
   m_Name: Coin Counter Text
-  m_TagString: CoinCounter
+  m_TagString: CoinCounterText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

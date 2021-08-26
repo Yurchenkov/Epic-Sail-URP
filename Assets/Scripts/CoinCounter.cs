@@ -6,14 +6,15 @@ public class CoinCounter : MonoBehaviour {
     private Text _coinCounterText;
 
     private void Awake() {
-        _coinCounterText = GameObject.FindGameObjectWithTag(Constants.TAG_COIN_COUNTER).GetComponent<Text>();
+        _coinCounterText = GameObject.FindGameObjectWithTag(Constants.TAG_COIN_COUNTER_TEXT).GetComponent<Text>();
     }
 
-    private void Update() {
+    public void IncreaseCoinCounter() {
+        GameManager.instance.playerData.AddMoney();
         DisplayCoinCount();
     }
 
     private void DisplayCoinCount() {
-        _coinCounterText.text = GameManager.instance.playerData.levelMoney.ToString() != null ? GameManager.instance.playerData.levelMoney.ToString() : "";
+        _coinCounterText.text = GameManager.instance.playerData.levelMoney.ToString() ?? "";
     }
 }

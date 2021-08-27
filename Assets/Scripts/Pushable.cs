@@ -12,9 +12,9 @@ public class Pushable : MonoBehaviour {
 
     private Transform _transform;
     private Rigidbody _rigidbody;
-    private float raycastDistance = 5f;
-    private float minBorderZ = 0;
-    private float maxBorderZ = 0;
+    private float _raycastDistance = 5f;
+    private float _minBorderZ = 0;
+    private float _maxBorderZ = 0;
 
     private void Awake() {
         _transform = transform;
@@ -40,7 +40,7 @@ public class Pushable : MonoBehaviour {
             float step = GetStep();
             motionTarget.y = _transform.position.y;
             Vector3 moveTowards = Vector3.MoveTowards(_transform.position, motionTarget, step);
-            moveTowards.z = Mathf.Clamp(moveTowards.z, minBorderZ, maxBorderZ);
+            moveTowards.z = Mathf.Clamp(moveTowards.z, _minBorderZ, _maxBorderZ);
             _transform.position = moveTowards;
         }
     }
@@ -91,14 +91,14 @@ public class Pushable : MonoBehaviour {
         while (true) {
             Transform waterArea;
             RaycastHit[] downPieces;
-            downPieces = Physics.RaycastAll(_transform.position, Vector3.down, raycastDistance);
+            downPieces = Physics.RaycastAll(_transform.position, Vector3.down, _raycastDistance);
             foreach (RaycastHit hit in downPieces) {
                 GroundPiece groundChecking = hit.transform.gameObject.GetComponent<GroundPiece>();
                 if (groundChecking != null) {
                     waterArea = groundChecking.waterArea;
                     Bounds boundsArea = waterArea.GetComponent<Renderer>().bounds;
-                    minBorderZ = (boundsArea.center.z - boundsArea.extents.z) * 0.5f;
-                    maxBorderZ = (boundsArea.center.z + boundsArea.extents.z) * 0.5f;
+                    _minBorderZ = (boundsArea.center.z - boundsArea.extents.z) * 0.5f;
+                    _maxBorderZ = (boundsArea.center.z + boundsArea.extents.z) * 0.5f;
                     break;
                 }
             }

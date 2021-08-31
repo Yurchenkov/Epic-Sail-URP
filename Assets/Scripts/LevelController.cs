@@ -5,7 +5,8 @@ public class LevelController : MonoBehaviour {
     public float speed = 5f;
     public enum LevelTypes {
         Open,
-        Linear
+        Linear,
+        Tutorial
     };
 
     public LevelTypes levelType;
@@ -18,7 +19,13 @@ public class LevelController : MonoBehaviour {
 
     void Update() {
         GameManager.instance.currentLevelType = levelType.ToString();
-        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR && !GameManager.instance.isGamePaused)
+        if (IsNeedMoveLevel())
             _transform.Translate(-Vector3.right * speed * Time.deltaTime);
+    }
+
+    private bool IsNeedMoveLevel() {
+        return GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR 
+            || GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_TUTORIAL 
+            && !GameManager.instance.isGamePaused;
     }
 }

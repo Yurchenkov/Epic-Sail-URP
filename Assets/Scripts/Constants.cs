@@ -19,6 +19,7 @@ public class Constants {
 
     public const string LEVEL_TYPE_OPEN = "Open";
     public const string LEVEL_TYPE_LINEAR = "Linear";
+    public const string LEVEL_TYPE_TUTORIAL = "Tutorial";
 
     public const string OBSTACLE_TYPE_STATIC = "Static";
     public const string OBSTACLE_TYPE_FLOATABLE = "Floatable";

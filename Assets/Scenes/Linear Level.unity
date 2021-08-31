@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  levelType: 1
+  levelType: 2
 --- !u!4 &1095895534 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7055892706857874974, guid: eda3cbe172b3d5242bb88e0d4bbe1960, type: 3}
@@ -2572,6 +2572,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -470067213634067786, guid: 28911537f2da1d94381d2c67828c50b8, type: 3}
+--- !u!114 &1496688923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496688919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dea73dd8096914198b3a79013a5665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {fileID: 2063519279}
+  endPosition: {fileID: 1760138765}
+  scaleX: 0.6
+  waterArea: {fileID: 1095895534}
 --- !u!1 &1563361939 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3757167968842913887, guid: 01fd59c552e1c0342824ca4dd936442f, type: 3}
@@ -2997,6 +3013,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -470067213634067786, guid: 28911537f2da1d94381d2c67828c50b8, type: 3}
+--- !u!114 &1760138769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760138764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dea73dd8096914198b3a79013a5665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {fileID: 2063519279}
+  endPosition: {fileID: 1760138765}
+  scaleX: 0.6
+  waterArea: {fileID: 1095895534}
 --- !u!1 &1788623122
 GameObject:
   m_ObjectHideFlags: 0

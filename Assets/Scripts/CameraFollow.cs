@@ -15,10 +15,8 @@ public class CameraFollow : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        Vector3 targetPosition = _target.position + _offset;
-        if (GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
-            targetPosition = new Vector3(targetPosition.x, targetPosition.y, 0f);
-
+        Vector3 targetPosition = _target.position + _offset;   
+        targetPosition = new Vector3(targetPosition.x, targetPosition.y, 0f);
         _transform.position = Vector3.SmoothDamp(_transform.position, targetPosition, ref _velocity, _smoothTime);
     }
 }

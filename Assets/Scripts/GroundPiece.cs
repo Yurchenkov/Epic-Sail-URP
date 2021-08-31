@@ -12,6 +12,9 @@ public class GroundPiece : MonoBehaviour {
     }
 
     private void OnBecameInvisible() {
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR)
+            return;
+
         GroundCreator.instance.DeletePiece(gameObject);
     }
 }

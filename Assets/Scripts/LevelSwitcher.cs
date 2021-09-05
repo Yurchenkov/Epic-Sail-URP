@@ -21,7 +21,7 @@ public class LevelSwitcher : MonoBehaviour {
         transition.SetTrigger(Constants.ANIMATION_TRIGGER_CROSSFADE);
 
         yield return new WaitForSeconds(_transitionTime);
-        GameManager.instance.playerData.ClosePlayerData();
+        GameManager.instance.playerData.ResetLevelMoney();
         SaveLoadManager.Save(GameManager.instance.playerData);
         SceneManager.LoadScene(levelIndex);
     }

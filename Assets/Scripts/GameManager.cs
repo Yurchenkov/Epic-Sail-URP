@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
     public void Restart() {
         Time.timeScale = 1f;
         SetPauseGameState(false);
-        playerData.ClosePlayerData();
+        playerData.ResetLevelMoney();
         SaveLoadManager.Save(playerData);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
     public void QuitToMainMenu() {
         Time.timeScale = 1f;
         SetPauseGameState(false);
-        playerData.ClosePlayerData();
+        playerData.ResetLevelMoney();
         SaveLoadManager.Save(playerData);
         SceneManager.LoadScene(Constants.BUILD_INDEX_MAIN_MENU);
     }
@@ -59,4 +59,5 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1f;
         SetPauseGameState(false);
     }
+
 }

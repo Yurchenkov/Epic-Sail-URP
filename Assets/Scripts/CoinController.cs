@@ -23,7 +23,6 @@ public class CoinController : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag(Constants.TAG_PLAYER)) {
             _coinCounter.IncreaseCoinCounter();
-            RecordTable.AddCoinCost();
             Destroy(gameObject);
         }
     }

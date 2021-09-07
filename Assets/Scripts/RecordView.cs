@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecordViev : MonoBehaviour {
+public class RecordView : MonoBehaviour {
 
     public RectTransform linePrefab;
     public RectTransform content;

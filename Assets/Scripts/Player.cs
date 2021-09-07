@@ -9,7 +9,7 @@ public struct Player {
     public string name;
     public int levelMoney;
     public int totalMoney;
-    
+
     private List<RecordLine> _scoreList;
     private List<string> _completedTutorials;
     private List<string> _viewedPopups;
@@ -34,7 +34,8 @@ public struct Player {
     }
 
     public void ClosePlayerData() {
-        SetRecord();
+        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR) SetRecord();
+        RecordTable.CleanRecordLineStats();
         ResetLevelMoney();
     }
 

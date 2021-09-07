@@ -44,13 +44,17 @@ public static class RecordTable {
     }
 
     public static void SaveRecordInList() {
-        int linePosition = 0;
-        for (int line = 0; line > _recordTable.Count; line++) {
-            if (_recordLine.score < _recordTable[line].score) {
+        int linePosition = _recordTable.Count;
+        for (int line = 0; line < _recordTable.Count; line++) {
+            if (_recordLine.score > _recordTable[line].score) {
                 linePosition = line;
                 break;
             }
         }
         _recordTable.Insert(linePosition, _recordLine);
+    }
+
+    public static void CleanRecordLineStats() {
+        _recordLine = new RecordLine();
     }
 }

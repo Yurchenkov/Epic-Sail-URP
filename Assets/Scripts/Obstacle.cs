@@ -50,6 +50,7 @@ public class Obstacle : MonoBehaviour {
     private void HandleCollision(Collision collision) {
         Obstacle collisionObstacleComponent = collision.gameObject.GetComponent<Obstacle>();
         if (IsMatchable() && IsMatchable(collisionObstacleComponent) && IsSameMatchType(collisionObstacleComponent)) {
+            RecordTable.AddObstacleCost(2);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
@@ -75,6 +76,7 @@ public class Obstacle : MonoBehaviour {
     private void Damage() {
         safetyMargin--;
         if (safetyMargin.Equals(0)) {
+            RecordTable.AddObstacleCost();
             Destroy(gameObject);
             return;
         }

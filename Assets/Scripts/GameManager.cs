@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
         else if (instance == this)
             Destroy(gameObject);
         playerData = SaveLoadManager.Load<Player>("Player") != null ? (Player)SaveLoadManager.Load<Player>("Player") : playerData;
+        playerData.SetRecordTable();
     }
 
     private void OnEnable() {

@@ -7,15 +7,18 @@ public class RecordViev : MonoBehaviour {
     public RectTransform content;
 
     public void ShowRecordList() {
-
         foreach (Transform child in content) {
             Destroy(child.gameObject);
         }
 
-        foreach (var line in GameManager.instance.playerData.scoreList) {
+        foreach (var line in RecordTable.GetRecordTable()) {
             RectTransform lineItem = Instantiate(linePrefab);
             lineItem.transform.SetParent(content, false);
-            lineItem.GetComponent<Text>().text = line.Value;
+            lineItem.GetComponent<Text>().text = $"Score: {line.score}. " +
+                                                 $"Distance: {line.groundCount}. " +
+                                                 $"Coins: {line.coinCount}. " +
+                                                 $"Obstacle: {line.obstacleCount}. " +
+                                                 $"Bonuses: {line.bonusCount}.";
         }
     }
 }

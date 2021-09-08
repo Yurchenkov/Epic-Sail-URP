@@ -34,7 +34,9 @@ public struct Player {
     }
 
     public void ClosePlayerData() {
-        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR) SetRecord();
+        if (GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
+            SetRecord();
+
         RecordTable.CleanRecordLineStats();
         ResetLevelMoney();
     }

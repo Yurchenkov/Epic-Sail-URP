@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 
 public static class RecordTable {
@@ -7,7 +6,6 @@ public static class RecordTable {
     private static int _obstacleCost = 30;
     private static int _bonusCost = 50;
     private static int _coinCost = 1;
-
     private static List<RecordLine> _recordTable = new List<RecordLine>();
     private static RecordLine _recordLine = new RecordLine();
 

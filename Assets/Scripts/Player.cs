@@ -8,7 +8,6 @@ public struct Player {
     public int levelMoney;
     public int totalMoney;
 
-    private List<RecordLine> _scoreList;
     private List<string> _completedTutorials;
     private List<string> _viewedPopups;
 
@@ -19,11 +18,6 @@ public struct Player {
         totalMoney = 0;
         _completedTutorials = new List<string>();
         _viewedPopups = new List<string>();
-        _scoreList = new List<RecordLine>();
-    }
-
-    public void SetRecordTable() {
-        RecordTable.GetPlayerRecord(_scoreList);
     }
 
     public void AddMoney(int moneyCount = 1) {
@@ -31,15 +25,7 @@ public struct Player {
         totalMoney += moneyCount;
     }
 
-    public void ClosePlayerData() {
-        if (GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
-            SetRecord();
-
-        RecordTable.CleanRecordLineStats();
-        ResetLevelMoney();
-    }
-
-    private void ResetLevelMoney() {
+    public void ResetLevelMoney() {
         levelMoney = 0;
     }
 
@@ -68,10 +54,5 @@ public struct Player {
     public void SetPopupAsViewed(string popupType) {
         if (!_viewedPopups.Contains(popupType))
             _viewedPopups.Add(popupType);
-    }
-
-    private void SetRecord() {
-        RecordTable.SaveRecordInList();
-        _scoreList = RecordTable.GetRecordTable();
     }
 }

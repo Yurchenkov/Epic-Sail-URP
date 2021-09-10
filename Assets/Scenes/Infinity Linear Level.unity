@@ -133,6 +133,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3333778010259434104, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
   m_PrefabInstance: {fileID: 6090873953034370271}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &602972892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 128280413, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
+  m_PrefabInstance: {fileID: 6090873953034370271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &767465107
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +374,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784918114}
   m_CullTransparentMesh: 1
+--- !u!114 &972828940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 73736269937312534, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
+  m_PrefabInstance: {fileID: 6090873953034370271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1023979015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1491370475, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
+  m_PrefabInstance: {fileID: 6090873953034370271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1056786665 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2646058208995469800, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
@@ -408,13 +435,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71fe20a5115beca4a878ddaef28b1adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseWindowCanvas: {fileID: 0}
-  paymentButton: {fileID: 0}
+  loseWindowCanvas: {fileID: 602972892}
+  paymentButton: {fileID: 1023979015}
   _initialFee: 50
   _feeIncrement: 100
   _maximumFee: 5000
   _totalMoneyAmount: {fileID: 1056786665}
-  _collectedMoneyAmount: {fileID: 0}
+  _collectedMoneyAmount: {fileID: 972828940}
+--- !u!114 &1597060173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 972828940, guid: 71f2ae3fa7bbb174b80dec3bb2b0f815, type: 3}
+  m_PrefabInstance: {fileID: 6090873953034370271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582465bf07d0ca244a230d70d540daba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1609713887
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +971,7 @@ PrefabInstance:
     - target: {fileID: 3757167968842913884, guid: 01fd59c552e1c0342824ca4dd936442f, type: 3}
       propertyPath: _timer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1597060173}
     - target: {fileID: 3757167968842913884, guid: 01fd59c552e1c0342824ca4dd936442f, type: 3}
       propertyPath: localCoinCounter
       value: 0

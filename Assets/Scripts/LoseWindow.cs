@@ -10,6 +10,7 @@ public class LoseWindow : MonoBehaviour {
     [SerializeField] private int _feeIncrement;
     [SerializeField] private int _maximumFee;
     [SerializeField] private Text _totalMoneyAmount;
+    [SerializeField] private Text _collectedMoneyAmount;
 
     private int _continuationFee;
     private GameObject _obstacle;
@@ -43,7 +44,8 @@ public class LoseWindow : MonoBehaviour {
     public void OpenLoseWindow(GameObject obstacle) {
         _obstacle = obstacle;
         GameManager.instance.Pause();
-        _totalMoneyAmount.text = "Всего денег: " + GameManager.instance.playerData.totalMoney;
+        _totalMoneyAmount.text = GameManager.instance.playerData.totalMoney.ToString();
+        _collectedMoneyAmount.text = GameManager.instance.playerData.levelMoney.ToString();
         loseWindowCanvas.SetActive(true);
         ShowPaymentButton();
     }

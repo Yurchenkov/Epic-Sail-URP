@@ -9,14 +9,14 @@ public class GameManager : MonoBehaviour {
     public bool isGamePaused = false;
     public string currentLevelType;
     public ResumeTimer _timer;
-    public Player playerData = new Player(1);
+    public Player playerData;
 
     private void Awake() {
         if (instance == null)
             instance = this;
         else if (instance == this)
             Destroy(gameObject);
-        playerData = SaveLoadManager.Load<Player>("Player") != null ? (Player)SaveLoadManager.Load<Player>("Player") : playerData;
+        playerData = playerData.Load();
         playerData.SetRecordTable();
     }
 

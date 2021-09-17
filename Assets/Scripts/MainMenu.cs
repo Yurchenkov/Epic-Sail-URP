@@ -3,13 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    public GameObject infiniteLevelButton;
-
     public void StartGame() {
         if (GameManager.instance.playerData.IsTutorialComplete(Constants.TUTORIAL_LEVEL)) {
             StartInfiniteLevel();
             return;
         }
+
         StartTutorial();
     }
 

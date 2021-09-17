@@ -4,18 +4,18 @@ using System.IO;
 
 public static class SaveLoadManager {
 
+    private static BinaryFormatter _binaryFormatter = new BinaryFormatter();
+
     public static void Save(object savedObject) {
-        BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(GetPath(savedObject.GetType().ToString()));
-        bf.Serialize(file, savedObject);
+        _binaryFormatter.Serialize(file, savedObject);
         file.Close();
     }
 
     public static object Load<T>(string objectType) {
         if (File.Exists(GetPath(objectType))) {
-            BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(GetPath(objectType), FileMode.Open);
-            T returnedObject = (T)bf.Deserialize(file);
+            T returnedObject = (T)_binaryFormatter.Deserialize(file);
             file.Close();
             return returnedObject;
         }
@@ -24,6 +24,6 @@ public static class SaveLoadManager {
     }
 
     private static string GetPath(string objectType) {
-        return Application.persistentDataPath + "/" + objectType + ".sd";
+        return $"{Application.persistentDataPath}/{objectType}.sd";
     }
 }

@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 0ac795f7f12c6e5468a4580d0acc1c9c, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: ba5ec6ffb9d7e3a49a3c5cc2aea1e5e4, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 6bd2dc659b1e6f943a217c7de0239c41, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 5ebd4e746c5ec3e4dbc23ebb4d5e5d07, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -892,10 +892,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.453
+    m_Strength: 0.75
     m_Bias: 1
     m_NormalBias: 1
     m_NearPlane: 0.2

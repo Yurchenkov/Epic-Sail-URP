@@ -13,22 +13,22 @@ public class TutorialController : MonoBehaviour {
 
     public void CloseTutorial() {
         tutorialCanvas.SetActive(false);
-        GameManager.instance.playerData.CompleteTutorial(_tutorialType);
+        GameManager.Instance.playerData.CompleteTutorial(_tutorialType);
         ResumeGame();
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.instance.playerData.IsTutorialComplete(_tutorialType))
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.Instance.playerData.IsTutorialComplete(_tutorialType))
             ShowTutorial();
     }
 
     public void ShowTutorial() {
-        GameManager.instance.Pause();
+        GameManager.Instance.Pause();
         StartTutorialAnimation();
     }
 
     private void ResumeGame() {
-        GameManager.instance.ResumeAfterTimer();
+        GameManager.Instance.ResumeAfterTimer();
     }
 
     private void StartTutorialAnimation() {

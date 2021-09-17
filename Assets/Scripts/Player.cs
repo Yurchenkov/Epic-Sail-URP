@@ -32,7 +32,7 @@ public struct Player {
     }
 
     public void ClosePlayerData() {
-        if (GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
+        if (GameManager.Instance.currentLevelType.Equals(Constants.LEVEL_TYPE_LINEAR))
             SetRecord();
 
         RecordTable.CleanRecordLineStats();

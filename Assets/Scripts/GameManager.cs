@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public static GameManager instance;
+    public static GameManager Instance { get; private set; }
 
     public bool isGamePaused = false;
     public string currentLevelType;
@@ -11,10 +11,7 @@ public class GameManager : MonoBehaviour {
     public Player playerData;
 
     private void Awake() {
-        if (instance == null)
-            instance = this;
-        else if (instance == this)
-            Destroy(gameObject);
+        Instance = this;
         playerData = playerData.Load();
         playerData.SetRecordTable();
     }

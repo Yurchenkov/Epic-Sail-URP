@@ -67,7 +67,7 @@ public class Pushable : MonoBehaviour {
     }
 
     private void Rotate() {
-        if (GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
+        if (GameManager.Instance.currentLevelType == Constants.LEVEL_TYPE_OPEN) {
             SetOpenLevelRotation();
             return;
         }

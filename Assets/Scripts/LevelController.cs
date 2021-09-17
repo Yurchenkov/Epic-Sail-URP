@@ -18,14 +18,14 @@ public class LevelController : MonoBehaviour {
     }
 
     void Update() {
-        GameManager.instance.currentLevelType = levelType.ToString();
+        GameManager.Instance.currentLevelType = levelType.ToString();
         if (IsNeedMoveLevel())
             _transform.Translate(-Vector3.right * speed * Time.deltaTime);
     }
 
     private bool IsNeedMoveLevel() {
-        return GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR 
-            || GameManager.instance.currentLevelType == Constants.LEVEL_TYPE_TUTORIAL 
-            && !GameManager.instance.isGamePaused;
+        return GameManager.Instance.currentLevelType == Constants.LEVEL_TYPE_LINEAR 
+            || GameManager.Instance.currentLevelType == Constants.LEVEL_TYPE_TUTORIAL 
+            && !GameManager.Instance.isGamePaused;
     }
 }

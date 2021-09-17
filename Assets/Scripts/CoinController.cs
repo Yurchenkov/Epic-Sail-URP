@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour {
 
-    private float _speed = 250f;
+    private float _rotationSpeed = 250f;
     private Transform _transform;
     private CoinCounter _coinCounter;
 
@@ -16,7 +16,7 @@ public class CoinController : MonoBehaviour {
     }
 
     private void Rotate() {
-        Quaternion rotation = Quaternion.Euler(0, Time.time * _speed, 0);
+        Quaternion rotation = Quaternion.Euler(0, Time.time * _rotationSpeed, 0);
         _transform.rotation = rotation;
     }
 
@@ -29,7 +29,7 @@ public class CoinController : MonoBehaviour {
     }
 
     private void OnBecameInvisible() {
-        if (!GameManager.instance.currentLevelType.Equals(Constants.LEVEL_TYPE_OPEN))
+        if (!GameManager.Instance.currentLevelType.Equals(Constants.LEVEL_TYPE_OPEN))
             Destroy(gameObject);
     }
 }

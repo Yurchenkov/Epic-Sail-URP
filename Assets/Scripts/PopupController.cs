@@ -19,23 +19,23 @@ public class PopupController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.instance.playerData.IsPopupViewed(_popupType)) {
+        if (other.CompareTag(Constants.TAG_PLAYER) && !GameManager.Instance.playerData.IsPopupViewed(_popupType)) {
             ShowPopup();
             if (CompareTag(Constants.TAG_TUTORIAL_LEVEL_COMPLETION))
-                GameManager.instance.playerData.CompleteTutorial(Constants.TUTORIAL_LEVEL);
+                GameManager.Instance.playerData.CompleteTutorial(Constants.TUTORIAL_LEVEL);
         }
     }
 
     public void ShowPopup() {
-        GameManager.instance.Pause();
+        GameManager.Instance.Pause();
         FillPopupCanvas();
 
         if (isDisposable)
-            GameManager.instance.playerData.SetPopupAsViewed(_popupType);
+            GameManager.Instance.playerData.SetPopupAsViewed(_popupType);
     }
 
     public void ResumeGame() {
-        GameManager.instance.ResumeAfterTimer();
+        GameManager.Instance.ResumeAfterTimer();
     }
 
     private void FillPopupCanvas() {

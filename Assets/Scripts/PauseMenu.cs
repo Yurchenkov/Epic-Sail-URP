@@ -6,28 +6,28 @@ public class PauseMenu : MonoBehaviour {
     [SerializeField] private Button _pauseButton;
 
     private void Start() {
-        GameManager.instance._timer.CountdownIsOver += ResumAfterTimer;
+        GameManager.Instance._timer.CountdownIsOver += ResumAfterTimer;
     }
 
     private void OnDestroy() {
-        GameManager.instance._timer.CountdownIsOver -= ResumAfterTimer;
+        GameManager.Instance._timer.CountdownIsOver -= ResumAfterTimer;
     }
 
     public void Pause() {
-        GameManager.instance.Pause();
+        GameManager.Instance.Pause();
         _pauseButton.enabled = false;
     }
 
     public void Resume() {
-        GameManager.instance.Resume();
+        GameManager.Instance.Resume();
     }
 
     public void Restart() {
-        GameManager.instance.Restart();
+        GameManager.Instance.Restart();
     }
 
     public void QuitToMainMenu() {
-        GameManager.instance.QuitToMainMenu();
+        GameManager.Instance.QuitToMainMenu();
     }
 
     private void ResumAfterTimer() {

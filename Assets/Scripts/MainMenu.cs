@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
     public void StartGame() {
-        if (GameManager.instance.playerData.IsTutorialComplete(Constants.TUTORIAL_LEVEL)) {
+        if (GameManager.Instance.playerData.IsTutorialComplete(Constants.TUTORIAL_LEVEL)) {
             StartInfiniteLevel();
             return;
         }

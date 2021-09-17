@@ -10,11 +10,11 @@ public class CoinCounter : MonoBehaviour {
     }
 
     public void IncreaseCoinCounter() {
-        GameManager.instance.playerData.AddMoney();
+        GameManager.Instance.playerData.AddMoney();
         DisplayCoinCount();
     }
 
     private void DisplayCoinCount() {
-        _coinCounterText.text = GameManager.instance.playerData.levelMoney.ToString() ?? "";
+        _coinCounterText.text = GameManager.Instance.playerData.levelMoney.ToString() ?? "";
     }
 }

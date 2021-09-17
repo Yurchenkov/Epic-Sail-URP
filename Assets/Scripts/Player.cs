@@ -76,4 +76,17 @@ public struct Player {
         RecordTable.SaveRecordInList();
         _scoreList = RecordTable.GetRecordTable();
     }
+
+    public Player Load() {
+        Player playerData;
+        if (SaveLoadManager.Load<Player>("Player") == null)
+            return new Player(1);
+        else
+            playerData = (Player)SaveLoadManager.Load<Player>("Player");
+
+        playerData._scoreList = playerData._scoreList ?? new List<RecordLine>();
+        playerData._completedTutorials = playerData._completedTutorials ?? new List<string>();
+        playerData._viewedPopups = playerData._viewedPopups ?? new List<string>();
+        return playerData;
+    }
 }

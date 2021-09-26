@@ -9,6 +9,9 @@ public class BoatModel : MonoBehaviour{
     public BoatsMast testMast;
     public BoatsSail testSail;
 
+    public delegate void TouchCard();
+    public event TouchCard TouchAnother;
+
     [SerializeField] private BoatsStern _currentStern;
     [SerializeField] private BoatsMast _currentMast;
     [SerializeField] private BoatsSail _currentSail;
@@ -89,5 +92,9 @@ public class BoatModel : MonoBehaviour{
             _nextLevelButton.gameObject.SetActive(true);
             GameManager.Instance.playerData.CompleteTutorial(Constants.TUTORIAL_WORKSHOP);
         }
+    }
+
+    public void StartTouchEvent() {
+        TouchAnother?.Invoke();
     }
 }

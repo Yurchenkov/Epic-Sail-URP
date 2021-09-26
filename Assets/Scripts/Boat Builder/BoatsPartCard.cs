@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler {
 
     public Image image;
     public int partCount;
@@ -12,6 +12,8 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     
     public int currentPartsList;
     public bool isClose;
+
+    
 
     [SerializeField] private Image _fogImage;
     [SerializeField] private Text _priceText;
@@ -23,6 +25,14 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void Awake() {
         _transform = transform;
         image = GetComponent<Image>();
+    }
+
+    private void OnEnable() {
+        BoatModel.instance.TouchAnother += TouchAnotherCard;
+    }
+
+    private void OnDisable() {
+        BoatModel.instance.TouchAnother -= TouchAnotherCard;
     }
 
     private void Start() {
@@ -50,16 +60,17 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //}
 
     public void OnPointerEnter(PointerEventData eventData) {
+        BoatModel.instance.StartTouchEvent();
         SetImageScale(1.2f);
         SetColor(1);
         if (!isClose && !isPaid)
             _paymentPanel.SetActive(true);
     }
 
-    public void OnPointerExit(PointerEventData eventData) {
-        SetImageScale();
-        SetColor(194f / 255f);
-        _paymentPanel.SetActive(false);
+    public void TouchAnotherCard() {
+            SetImageScale();
+            SetColor(194f / 255f);
+            _paymentPanel.SetActive(false);        
     }
 
     private void SetColor(float color) {
@@ -88,5 +99,4 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         _priceText.enabled = false;
         isPaid = true;
     }
-
 }

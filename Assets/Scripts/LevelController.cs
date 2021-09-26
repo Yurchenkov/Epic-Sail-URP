@@ -6,7 +6,7 @@ public class LevelController : MonoBehaviour {
     public enum LevelTypes {
         Open,
         Linear,
-        Tutorial
+        Tutorial,
     };
 
     public LevelTypes levelType;

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PartsDepository : MonoBehaviour
+public class PartsRepository : MonoBehaviour
 {
-    public static PartsDepository instance;
+    public static PartsRepository instance;
 
     public List<BoatsStern> sterns;
     public List<BoatsMast> masts;

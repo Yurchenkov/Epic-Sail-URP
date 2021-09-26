@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingButton : MonoBehaviour{
@@ -18,4 +16,6 @@ public class MovingButton : MonoBehaviour{
     public void BackPosition() {
         _rectTransform.localPosition = new Vector3(-60, defaultPosition.localPosition.y, defaultPosition.localPosition.z);
     }
+
+
 }

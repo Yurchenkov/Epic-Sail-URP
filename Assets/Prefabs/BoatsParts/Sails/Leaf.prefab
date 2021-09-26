@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8669498779296151667}
+  - component: {fileID: 7508489767705611421}
   - component: {fileID: 2476029132947216890}
   - component: {fileID: 4995517391646368244}
-  - component: {fileID: 7508489767705611421}
   m_Layer: 0
   m_Name: Leaf
   m_TagString: Untagged
@@ -33,6 +33,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7508489767705611421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083502133997986403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d2a66401e0d754a8cc7151be1b678b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 7083502133997986403}
+  _sprite: {fileID: 8568142618917566389, guid: eb13bf65bd4a4674dbb7cd0e44fa18a6, type: 3}
+  _isPaid: 0
+  _price: 0
+  _isClosed: 0
 --- !u!33 &2476029132947216890
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60,7 +77,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1812647522408553600, guid: 31b93d21752b9274bb4763e145956a54, type: 3}
+  - {fileID: 2100000, guid: b822cc2189a511c4d9f4786a57c4dd84, type: 2}
   - {fileID: -6629797300637803691, guid: 31b93d21752b9274bb4763e145956a54, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -83,19 +100,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7508489767705611421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7083502133997986403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d2a66401e0d754a8cc7151be1b678b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 7083502133997986403}
-  _image: {fileID: 0}
-  _isPaid: 0
-  _price: 0

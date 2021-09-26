@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804167423484155098}
+  - component: {fileID: 6027814018810080470}
   - component: {fileID: 2511727500498367786}
   - component: {fileID: 4451069626655450792}
-  - component: {fileID: 6027814018810080470}
   m_Layer: 0
   m_Name: Stern
   m_TagString: Untagged
@@ -34,6 +34,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6027814018810080470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449136005045217474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57875aa06c636d4bb3e4038f326f41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 4449136005045217474}
+  _sprite: {fileID: -8213782765776912250, guid: eb13bf65bd4a4674dbb7cd0e44fa18a6, type: 3}
+  _isPaid: 0
+  _price: 0
+  _isClosed: 0
+  mastMountingPoint: {fileID: 2077149999391426249}
 --- !u!33 &2511727500498367786
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83,24 +101,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6027814018810080470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4449136005045217474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e57875aa06c636d4bb3e4038f326f41c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 4449136005045217474}
-  _sprite: {fileID: 4814782224712076504, guid: 223e10f2de9be4d4ba713579d7741637, type: 3}
-  _isPaid: 0
-  _price: 0
-  _isClosed: 0
-  mastMountingPoint: {fileID: 2077149999391426249}
 --- !u!1 &5377378985988669869
 GameObject:
   m_ObjectHideFlags: 0

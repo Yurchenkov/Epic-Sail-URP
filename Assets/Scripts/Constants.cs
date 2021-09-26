@@ -20,6 +20,7 @@ public class Constants {
     public const string LEVEL_TYPE_OPEN = "Open";
     public const string LEVEL_TYPE_LINEAR = "Linear";
     public const string LEVEL_TYPE_TUTORIAL = "Tutorial";
+    public const string LEVEL_TYPE_WORKSHOP = "Workshop";
 
     public const string OBSTACLE_TYPE_STATIC = "Static";
     public const string OBSTACLE_TYPE_FLOATABLE = "Floatable";
@@ -28,6 +29,7 @@ public class Constants {
 
     public const string TUTORIAL_TYPE_MOVEMENT = "Movement";
     public const string TUTORIAL_LEVEL = "TutorialLevel";
+    public const string TUTORIAL_WORKSHOP = "WorkshopLevel";
 
     public const string LAYER_MASK_WATER = "Water";
 
@@ -35,6 +37,7 @@ public class Constants {
     public const int BUILD_INDEX_TUTORIAL_LINEAR_LEVEL = 1;
     public const int BUILD_INDEX_TUTORIAL_OPEN_LEVEL = 2;
     public const int BUILD_INDEX_INFINITE_LEVEL = 3;
+    public const int BUILD_INDEX_WORKSHOP_LEVEL = 4;
 
     public const string ANIMATION_TRIGGER_CROSSFADE = "Start";
 }

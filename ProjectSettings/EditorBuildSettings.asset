@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Infinity Linear Level.unity
     guid: 188cc8e8ae9c794469da7c0a89222279
+  - enabled: 1
+    path: Assets/Scenes/Workshop Level.unity
+    guid: d590d50d4f830df4eb7e0c463fa129be
   m_configObjects: {}

@@ -7,17 +7,18 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public Image image;
     public int partCount;
-    public bool isPaid;
+    public bool isPaid = false;
     public int price;
     
     public int currentPartsList;
     public bool isClose;
 
     [SerializeField] private Image _fogImage;
-    [SerializeField] private Text priceText;
+    [SerializeField] private Text _priceText;
+    [SerializeField] private GameObject _paymentPanel;
 
     private Transform _transform;
-    private float scaleMultiplier;
+    private float _scaleMultiplier;
     
     private void Awake() {
         _transform = transform;
@@ -27,16 +28,16 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void Start() {
         if (isPaid || isClose) {
             _fogImage.enabled = false;
-            priceText.enabled = false;
+            _priceText.enabled = false;
         } else {
-            priceText.text = price.ToString();
+            _priceText.text = price.ToString();
         }
     }
 
     private void SetImageScale(float scale = 1) {
         //FindScaleMultiplier();
-        scaleMultiplier = scale;
-        _transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, 1);
+        _scaleMultiplier = scale;
+        _transform.localScale = new Vector3(_scaleMultiplier, _scaleMultiplier, 1);
     }
 
     //private void FindScaleMultiplier() {
@@ -51,11 +52,14 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData) {
         SetImageScale(1.2f);
         SetColor(1);
+        if (!isClose && !isPaid)
+            _paymentPanel.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         SetImageScale();
         SetColor(194f / 255f);
+        _paymentPanel.SetActive(false);
     }
 
     private void SetColor(float color) {
@@ -68,16 +72,21 @@ public class BoatsPartCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         GameManager.Instance.playerData.ReduceTotalMoney(price);
         switch (currentPartsList) {
             case 1:
-                PartsDepository.instance.sterns[partCount].ToPay();
+                PartsRepository.instance.sterns[partCount].ToPay();
+                BoatModel.instance.SetStern(BoatModel.instance.testStern);
                 break;
             case 2:
-                PartsDepository.instance.masts[partCount].ToPay();
+                PartsRepository.instance.masts[partCount].ToPay();
                 break;
             case 3:
-                PartsDepository.instance.sails[partCount].ToPay();
+                PartsRepository.instance.sails[partCount].ToPay();
+                BoatModel.instance.SetMast(BoatModel.instance.testMast);
+                BoatModel.instance.SetSail(BoatModel.instance.testSail);
                 break;
         }
         _fogImage.enabled = false;
-        priceText.enabled = false;
+        _priceText.enabled = false;
+        isPaid = true;
     }
+
 }

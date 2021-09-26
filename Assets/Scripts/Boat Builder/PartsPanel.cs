@@ -22,13 +22,13 @@ public class PartsPanel : MonoBehaviour {
         _currentPartsListNumber = PartsDepositoryListNumber;
         switch (PartsDepositoryListNumber) {
             case 1:
-                FillPartsPanel(PartsDepository.instance.sterns);
+                FillPartsPanel(PartsRepository.instance.sterns);
                 break;
             case 2:
-                FillPartsPanel(PartsDepository.instance.masts);
+                FillPartsPanel(PartsRepository.instance.masts);
                 break;
             case 3:
-                FillPartsPanel(PartsDepository.instance.sails);
+                FillPartsPanel(PartsRepository.instance.sails);
                 break;
         }
     }

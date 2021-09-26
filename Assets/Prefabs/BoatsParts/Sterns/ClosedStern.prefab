@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 3801122598295155112}
-  _sprite: {fileID: 4333956695029999566, guid: 223e10f2de9be4d4ba713579d7741637, type: 3}
+  _sprite: {fileID: 658610804543150169, guid: eb13bf65bd4a4674dbb7cd0e44fa18a6, type: 3}
   _isPaid: 0
   _price: 0
   _isClosed: 1

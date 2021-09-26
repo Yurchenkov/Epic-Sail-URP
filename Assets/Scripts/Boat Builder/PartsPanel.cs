@@ -7,20 +7,21 @@ public class PartsPanel : MonoBehaviour {
 
     [SerializeField] private BoatsPartCard cardPrefab;
     [SerializeField] private RectTransform _contentPanel;
- 
-    private int _currentPartListNumber;
+
+    private int _currentPartsListNumber;
     private float _cardsOffsetX = 350;
 
     private void Start() {
-        FillPanelByListNumber(1);
+        //FillPanelByListNumber(1);
     }
 
     //TODO: Переписать логику передачи списков частей:
 
     public void FillPanelByListNumber(int PartsDepositoryListNumber) {
-        _currentPartListNumber = PartsDepositoryListNumber;
+        ClearContent();
+        _currentPartsListNumber = PartsDepositoryListNumber;
         switch (PartsDepositoryListNumber) {
-            case 1: 
+            case 1:
                 FillPartsPanel(PartsDepository.instance.sterns);
                 break;
             case 2:
@@ -29,11 +30,7 @@ public class PartsPanel : MonoBehaviour {
             case 3:
                 FillPartsPanel(PartsDepository.instance.sails);
                 break;
-
         }
-
-        _currentPartListNumber = 1;
-        
     }
 
     private List<BoatsPart> ConvertToBoatsPartList(IEnumerable<BoatsPart> partList) {
@@ -48,7 +45,7 @@ public class PartsPanel : MonoBehaviour {
     public void FillPartsPanel(IEnumerable<BoatsPart> partsList) {
         //_currentPartList = partsList;
         List<BoatsPart> boatsParts = ConvertToBoatsPartList(partsList);
-        foreach(BoatsPart part in boatsParts) {
+        foreach (BoatsPart part in boatsParts) {
             int i = 0;
             CreateCard(i, i, part);
             i++;
@@ -66,9 +63,16 @@ public class PartsPanel : MonoBehaviour {
         card.price = part.GetPrice;
         card.isPaid = part.GetPayable;
         card.partCount = partNumber;
-        card.currentPartsList = _currentPartListNumber;
+        card.currentPartsList = _currentPartsListNumber;
         card.isClose = part.GetClosedStatus;
 
         return card;
+    }
+
+    private void ClearContent() {
+        Transform content = _contentPanel.transform;
+        for (int i = 0; i < content.childCount; i++) {
+            Destroy(content.GetChild(i).gameObject);
+        }
     }
 }

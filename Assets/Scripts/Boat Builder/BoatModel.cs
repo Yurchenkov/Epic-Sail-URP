@@ -58,7 +58,7 @@ public class BoatModel : MonoBehaviour{
             Destroy(_currentStern.gameObject);
         }
 
-        _currentStern = Instantiate(newStern, Vector3.zero, Quaternion.identity, _transform);
+        _currentStern = Instantiate(newStern, Vector3.zero, _transform.rotation, _transform);
         
         if(_currentMast)
             SetMast(_currentMast);
@@ -73,7 +73,7 @@ public class BoatModel : MonoBehaviour{
         if (_currentStern)
             setPosition = _currentStern.GetMastMountingPoint.localPosition;
 
-        _currentMast = Instantiate(newMast, setPosition, Quaternion.identity, _transform);
+        _currentMast = Instantiate(newMast, setPosition, _transform.rotation, _transform);
         
         if (_currentSail)
             SetSail(_currentSail);
@@ -84,7 +84,7 @@ public class BoatModel : MonoBehaviour{
         if (_currentSail) {
             Destroy(_currentSail.gameObject);
         }
-        _currentSail = Instantiate(newSail, _currentMast.GetSailMountingPoint.localPosition, Quaternion.identity, _transform);
+        _currentSail = Instantiate(newSail, _currentMast.GetSailMountingPoint.localPosition, _transform.rotation, _transform);
     }
 
     private void EnableNextLevelButton() {

@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_d089b74b0c36f385936a06eeac2e9221_Out_0:
-        m_Texture: {fileID: 2800000, guid: c3ee2c4a3dc97eb4dbc77ff35d6c963c, type: 3}
+        m_Texture: {fileID: 2800000, guid: bc89cd8cb8125eb4cb1c8cfbb30d1002, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WaveGenerator_e23df566c2d147b58463f0d2ccabc09c_Texture2Db64cbfd08c7a44fdaad31867de2f6d5e_86696088:

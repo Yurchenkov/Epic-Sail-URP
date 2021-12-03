@@ -79,6 +79,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_d089b74b0c36f385936a06eeac2e9221_Out_0:
+        m_Texture: {fileID: 2800000, guid: c3ee2c4a3dc97eb4dbc77ff35d6c963c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WaveGenerator_e23df566c2d147b58463f0d2ccabc09c_Texture2Db64cbfd08c7a44fdaad31867de2f6d5e_86696088:
         m_Texture: {fileID: 2800000, guid: 802d6314cd0c7c04493eece22ef3c9c5, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -144,21 +148,21 @@ Material:
     - _ZWrite: 1
     - _deductible: 0
     - _mainDeductible: 0
-    - _mainSpeed: 0.3
+    - _mainSpeed: -0.3
     - _mainTiling: 0.005
     - _mainWaveSpeed: 0.3
     - _mainWaveTiling: 0.001
     - _secondaryDeductible: 0
-    - _secondarySpeed: 0.5
+    - _secondarySpeed: -0.5
     - _secondaryTiling: 0.003
     - _speedDivide: 20
     - _speedMultiplier: 20
     - _tiling: 0.005
-    - _waveHeight: 6
+    - _waveHeight: 3
     - _waveSpeed: 0.3
     - _waveStrength: 4.03
     m_Colors:
-    - Color_59f33f66e42c41fe8a4188eb602ef633: {r: 0.3254717, g: 0.6252587, b: 1, a: 1}
+    - Color_59f33f66e42c41fe8a4188eb602ef633: {r: 0.8160377, g: 0.8973234, b: 1, a: 1}
     - Color_8af6924e9203420f88b7d0d1f7aabe25: {r: 0.9764151, g: 0.9928723, b: 1, a: 1}
     - Color_e63899919f1349b9884bb26719e72341: {r: 0, g: 0.083200455, b: 1, a: 1}
     - Vector2_316ec1ff55fe4f86a42eef81efc643c7: {r: 1, g: 0, b: 0, a: 0}

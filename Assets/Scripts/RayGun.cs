@@ -8,7 +8,9 @@ public class RayGun : MonoBehaviour {
     public event RayShoting ShotingIsFinished;
 
     [SerializeField] private LayerMask _layerMask;
-
+    [SerializeField] private TrailRenderer _trailRender;
+    
+    private TrailRenderer _windTrail;
     private Transform _transform;
     private Camera _camera;
     private Touch _movingTouch;
@@ -19,31 +21,22 @@ public class RayGun : MonoBehaviour {
     private Vector2 _endPosition = Vector2.zero;
     private bool _isTouchEnded = false;
     private bool _hasTarget = false;
+    
 
     private void Awake() {
         Instance = this;
         _transform = transform;
         _camera = Camera.main;
+        _windTrail = Instantiate(_trailRender);
     }
 
     private void Update() {
-        //_isTouch = Input.touchCount > 0;
-        //if (_isTouch && !_hasStart) {
-        //    _movingTouch = Input.GetTouch(0);
-        //    GetPosition();
-        //}
-        //_endPosition = _movingTouch.position;
-        //if (_movingTouch.phase == TouchPhase.Ended) {
-        //    _hasStart = false;
-        //}
         CalculateInput();
+        RenderTrail();
         if (_isTouch) {
             if (!_hasStart) {
-                //_movingTouch = Input.GetTouch(0);
                 SetStartPosition();
-                Debug.Log(_inputPosition);
             }
-            //_endPosition = _inputPosition;
             ShootRay();
         } else {
             _hasStart = false;
@@ -56,6 +49,13 @@ public class RayGun : MonoBehaviour {
         }
     }
 
+    private void RenderTrail() {
+        if (_isTouchEnded) {
+            _windTrail.Clear();
+        }
+        _windTrail.enabled = _isTouch;
+    }
+
     private void SetStartPosition() {
         _startPosition = _inputPosition;
         _hasStart = true;
@@ -66,8 +66,14 @@ public class RayGun : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask)) {
             raycastHit.transform.gameObject.GetComponent<MovingSystem>().MakeTarget();
             _hasTarget = true;
-            Debug.Log("got target");
         }
+        if (Physics.Raycast(ray, out RaycastHit raycastHit1, float.MaxValue, LayerMask.GetMask("Water"))) {
+            Vector3 tempPosition = raycastHit1.point;
+            float pointHeight = raycastHit1.transform.gameObject.GetComponent<WaterPhisics>().GetWaterHeightAtPosition(tempPosition);
+            tempPosition.y = pointHeight;
+            _windTrail.gameObject.transform.position = tempPosition;
+        }
+
     }
 
     private void CalculateInput() {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaterPhisics : MonoBehaviour {
 
+    public Vector3 flowDirection;
+
     [SerializeField] private float _waveHeight = 4f;
     [SerializeField] private float _mainTiling = .001f;
     [SerializeField] private float _mainSpeed = .3f;
@@ -11,6 +13,11 @@ public class WaterPhisics : MonoBehaviour {
     [SerializeField] private float _secondaryTiling = 0.003f;
     [SerializeField] private float _secondarySpeed = .5f;
     [SerializeField] private float _secondaryDeductible = 0f;
+    [SerializeField] private Vector2 _mainDirection = new Vector2(1, 0);
+    [SerializeField] private Vector2 _secondaryDirection = new Vector2(1, 0);
+
+    [SerializeField] private Transform _beginning;
+    [SerializeField] private Transform _ending;
 
     private Material _waterMaterial;
     private Transform _transform;
@@ -20,16 +27,18 @@ public class WaterPhisics : MonoBehaviour {
     private void Start() {
         _transform = transform;
         SetMaterial();
+        flowDirection =(_beginning.position - _ending.position) * _mainSpeed;
     }
 
     public float GetWaterHeightAtPosition(Vector3 position) {
         UpdateParameters();
-        return _transform.position.y + Mathf.Clamp(GetWavesHeight(position, _mainTiling, _mainDeductible, _mainSpeed) - GetWavesHeight(position, _secondaryTiling, _secondaryDeductible, _secondarySpeed),0f,1f) * _waveHeight * transform.localScale.x;
+        return _transform.position.y + Mathf.Clamp(GetWavesHeight(position, _mainTiling, _mainDeductible, _mainSpeed, _mainDirection)
+                                                    - GetWavesHeight(position, _secondaryTiling, _secondaryDeductible, _secondarySpeed, _secondaryDirection),0f,1f) * _waveHeight * transform.localScale.x;
     }
 
-    private float GetWavesHeight(Vector3 position, float tiling, float deductible, float speed) {
+    private float GetWavesHeight(Vector3 position, float tiling, float deductible, float speed, Vector2 direction) {
         float speedMultiplier = (Time.time / 20) * speed;
-        return Mathf.Clamp(_wavesDisplacement.GetPixelBilinear(position.x * tiling + speedMultiplier, position.z * tiling).r - Mathf.Clamp(deductible, 0f, 1f), 0f, 1f);
+        return Mathf.Clamp(_wavesDisplacement.GetPixelBilinear(position.x * tiling + speedMultiplier * direction.x, position.z * tiling + speedMultiplier * direction.y).r - Mathf.Clamp(deductible, 0f, 1f), 0f, 1f);
     }
     private void SetMaterial() {
         _waterMaterial = GetComponent<Renderer>().sharedMaterial;
@@ -45,6 +54,8 @@ public class WaterPhisics : MonoBehaviour {
         _secondaryTiling = _waterMaterial.GetFloat("_secondaryTiling");
         _secondarySpeed = _waterMaterial.GetFloat("_secondarySpeed");
         _secondaryDeductible = _waterMaterial.GetFloat("_secondaryDeductible");
+        _mainDirection = _waterMaterial.GetVector("_mainDirection");
+        _secondaryDirection = _waterMaterial.GetVector("_secondaryDirection");
     }
     //private void OnValidate() {
     //    if (!_waterMaterial)

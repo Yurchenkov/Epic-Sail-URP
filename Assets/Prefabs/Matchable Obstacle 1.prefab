@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 1215508544340592547}
   - component: {fileID: 1215508544340592544}
   - component: {fileID: 1215508544340592545}
+  - component: {fileID: -9093740697588613765}
   - component: {fileID: 1215508544340592550}
   - component: {fileID: 1215508544340592551}
   - component: {fileID: 1215508544340592548}
+  - component: {fileID: -3509569863776218807}
   m_Layer: 0
   m_Name: Matchable Obstacle 1
   m_TagString: Obstacle
@@ -132,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215508544340592570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3ad0071ccc004844803b6b4fff9d10c, type: 3}
   m_Name: 
@@ -140,6 +142,27 @@ MonoBehaviour:
   depthBeforeSubmerged: 0
   displacementAmount: 3
   rigidBody: {fileID: 1215508544340592550}
+--- !u!114 &-9093740697588613765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215508544340592570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddebd3af1256d044a3aeb26127ca050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  underWaterDrag: 3
+  underWaterAngularDrag: 1.5
+  airDrag: 0
+  airAngularDrag: 0.05
+  floaters:
+  - {fileID: 1215508544340592549}
+  _upSpeed: 1
+  _upSpeedLimit: 1.25
+  _waterHeight: 0
 --- !u!54 &1215508544340592550
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,7 +174,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0.7
   m_AngularDrag: 0.7
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -186,3 +209,23 @@ MonoBehaviour:
   speed: 1
   forceMultiplier: 50
   _tilt: 1
+--- !u!114 &-3509569863776218807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215508544340592570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2214094fe7055f347923e90ceba6186d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 6
+  _isTarget: 0
+  maxDirection: 10
+  _speed: 15
+  _coveredDistance: 0
+  _targetDistance: 0
